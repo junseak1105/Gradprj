@@ -1,8 +1,11 @@
-package commonfunc;
+package common;
 
-public class CommonFunction implements commonfunc {
-	@Override
-	public boolean Valueisdigit(String value) {
+import javax.servlet.http.HttpServletRequest;
+
+public class CommonUtil  {
+	
+	//문자열 숫자여부 확인
+	public static boolean Valueisdigit(String value) {
 		boolean output = true;
 		for (int i = 0; i < value.length(); i++) { // 입력받은 문자열인 input의 길이만큼 반복문 진행(배열이 아닌 문자열의 길이기 때문에 length가 아닌
 													// length()를 사용해야한다.)
@@ -12,5 +15,16 @@ public class CommonFunction implements commonfunc {
 			}
 		}
 		return output;
+	}
+	
+
+	//파라미터 null 체크 후 반환
+	//사용법 String str = CommonUtil.Param_IsNull(request,"파라미터명");
+	public static String Param_IsNull(HttpServletRequest request, String input) {
+		String inputvalue = null;
+		if (request.getParameter(input) != null) {
+			inputvalue = request.getParameter(input);
+		}
+		return inputvalue;
 	}
 }

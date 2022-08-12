@@ -5,10 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import dbcontrol.constructer.Table_Keyoption;
-import dbcontrol.constructer.Table_col_data;
+import dbcontrol.DTO.Table_Keyoption_DTO;
+import dbcontrol.DTO.Table_col_DTO;
 
-public class DB_Executer extends JDBC_conn implements Executer {
+public class DB_Executer_DAO extends JDBC_conn implements Executer {
 	private static PreparedStatement pstmt;
 	private static ResultSet rs = null;
 

@@ -13,5 +13,8 @@
 <form action="dbtest">
 <input type="submit" value="dbtest">
 </form>
+<form action="newtable.jsp">
+<input type="submit" value="newtablepage">
+</form>
 </body>
 </html>
