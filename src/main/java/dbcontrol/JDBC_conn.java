@@ -1,4 +1,4 @@
-package dbconn;
+package dbcontrol;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ public class JDBC_conn {
 	public static Connection conn; // DB 커넥션 연결 객체
 	private static final String USERNAME = "root";// DBMS접속 시 아이디
 	private static final String PASSWORD = "(rla)wogns0249";// DBMS접속 시 비밀번호
-	private static final String URL = "jdbc:mysql://localhost:3306/dbtest";// DBMS접속할 db명
+	private static final String URL = "jdbc:mysql://localhost:3306/gradprj";// DBMS접속할 db명
 
 	public JDBC_conn() {
 		try {
