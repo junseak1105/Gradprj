@@ -47,7 +47,7 @@ public class Table_function implements Table_ctrl {
 		//신규테이블 생성용이면 최상단 id, 아니면 name에 따른 id 반환
 		String query="";
 		if(tablename==null) {
-			query = "select table_id from datatable_list order by table_id desc limit 1 ;";	
+			query = "select ifnull(table_id,'table_0')as table_id,count(*) from datatable_list order by table_id desc limit 1 ;";
 		}else {
 			query = "select table_id from datatable_list where table_name = '"+tablename+"';";
 		}
@@ -236,11 +236,11 @@ public class Table_function implements Table_ctrl {
 	}
 
 	@Override
-	public String Drop_query(String tablename) {
-		String table_id = getTableId(tablename);
-		db.DB_Ex_query_nr("delete from datatable_info where table_id = '"+table_id+"';");
-		db.DB_Ex_query_nr("delete from datatable_list where table_id = '"+table_id+"';");
-		String query = "drop table " + table_id + ";\n";
+	public String Drop_query(String table_id) {
+		String query="";
+		query+="delete from datatable_info where table_id = '"+table_id+"';";
+		query+="delete from datatable_list where table_id = '"+table_id+"';";
+		query += "drop table " + table_id + ";\n";
 		return query;
 	}
 

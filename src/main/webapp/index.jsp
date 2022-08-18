@@ -16,5 +16,8 @@
 <form action="newtable.jsp">
 <input type="submit" value="newtablepage">
 </form>
+<form action="droptable.jsp">
+    <input type="submit" value="droptable">
+</form>
 </body>
 </html>

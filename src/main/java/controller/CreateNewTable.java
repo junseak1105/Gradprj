@@ -55,6 +55,7 @@ public class CreateNewTable extends HttpServlet {
 			String colname=request.getParameter("colname_"+i);
 			String type=request.getParameter("type_"+i);
 			String NN=request.getParameter("NN_"+i);
+			System.out.println(NN);
 			if(type.equals("숫자")) {
 				type = "int";
 			}else if(type.equals("문자")) {
