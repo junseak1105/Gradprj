@@ -1,4 +1,4 @@
-package servlet.ajax;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
-import dbcontrol.Table_function;
+import DAO.Table_function;
 
 /**
  * Servlet implementation class Table_dup_chk

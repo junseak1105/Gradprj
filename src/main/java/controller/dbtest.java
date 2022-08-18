@@ -1,4 +1,4 @@
-package servlet;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dbcontrol.DB_Executer_DAO;
-import dbcontrol.JDBC_conn;
-import dbcontrol.Table_function;
-import dbcontrol.DTO.Table_Keyoption_DTO;
-import dbcontrol.DTO.Table_col_DTO;
+import Beans.DTO.Table_Keyoption_DTO;
+import Beans.DTO.Table_col_DTO;
+import DAO.DB_Executer;
+import DAO.Table_function;
+import common.JDBC_conn;
 
 /**
  * Servlet implementation class dbtest
@@ -39,7 +39,7 @@ public class dbtest extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		DB_Executer_DAO db = new DB_Executer_DAO();
+		DB_Executer db = new DB_Executer();
 		Table_function tf = new Table_function();
 		String table="users";
 		String col[]= {"username"};

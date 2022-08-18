@@ -1,4 +1,4 @@
-package dbcontrol.DTO;
+package Beans.DTO;
 
 public class Table_col_DTO {
 	public String name;

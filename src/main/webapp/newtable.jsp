@@ -6,8 +6,8 @@
 <%@include file="header.jsp"%>
 </head>
 <body>
-
-	<form>
+	<div id = "testoutput"></div>
+	<form id="table_data_frm">
 		<table>
 			<tr>
 				<td>
@@ -17,7 +17,7 @@
 							<td colspan="1">
 								<input type="text" name="tablename" id="tablename" />
 							</td>
-							<td><input type="button" value="중복확인" onclick="Table_dup_chk()"/></td>
+							<td><input type="button" value="중복확인" onclick="Table_dup_chk_func()"/></td>
 
 						</tr>
 						<tr>
@@ -27,6 +27,9 @@
 							</td>
 						</tr>
 						<tr>
+							<td colspan="3"><input type="hidden" name="colnum" id="colnum"  /></td>
+						</tr>
+						<tr>
 							<td>
 								<input type="button" id="btn_addcol" onclick="AddCol()" value="추가" />
 							</td>
@@ -34,7 +37,7 @@
 								<input type="button" id="btn_addcol" onclick="ClearCol()" value="전체 삭제" />
 							</td>
 							<td>
-								<input type="submit" value="제출" />
+								<input type="button" onclick= "Submit()" value="제출" />
 							</td>
 						</tr>
 					</table>
@@ -60,13 +63,39 @@
 </body>
 </html>
 <script type="text/javascript">
-	var row_cnt = 0;
-	var lineCount = 0;
+
+	var lineCount = 0; //현재 입력된 컬럼 갯수
+	
+	var Table_dup_chk = false;
 
 	$(document).ready(function() {//시작시 세팅
+		$("#colnum").val(lineCount);
 	});
 
-	function Table_dup_chk(){
+	//제출
+	function Submit(){
+		if(Table_dup_chk){
+			var formData = $("#table_data_frm").serialize();
+			$.ajax({
+      			type : "POST",            // HTTP method type(GET, POST) 형식이다.
+      			url : "/Gradprj/CreateNewTable",      // 컨트롤러에서 대기중인 URL 주소이다.
+      			data : formData,     // Json 형식의 데이터이다.
+      			dataType:'json',
+      			success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
+
+      				document.getElementById("testoutput").innerHTML= JSON.stringify(data);
+      			},
+      			error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로   들어옵니다.
+          			alert("통신 실패.")
+      			}
+  			});
+		}else{
+			alert("테이블 중복 해결하세요");
+		}
+	}
+
+	
+	function Table_dup_chk_func(){
   		// json 형식으로 데이터 set
   		var params = {
   		  name      : $("#tablename").val()
@@ -80,7 +109,13 @@
       		data : params,     // Json 형식의 데이터이다.
       		dataType:'json',
       		success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
-      			alert(JSON.stringify(data.result));
+      			if(JSON.stringify(data.result)!="\"\""){
+					Table_dup_chk = false;
+					alert("중복됨");
+				}else{
+					Table_dup_chk = true;
+					alert("사용가능");
+				}
       		},
       		error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로   들어옵니다.
           	alert("통신 실패.")
@@ -91,6 +126,7 @@
 	function ClearCol() {
 		document.getElementById("New_table").innerHTML = "";
 		lineCount = 0;
+		$("#colnum").val(lineCount);
 	}
 
 	function Delete_row(colnum) {
@@ -114,6 +150,7 @@
 		}
 
 		lineCount--;
+		$("#colnum").val(lineCount);
 	}
 
 	function AddCol() {
@@ -172,7 +209,7 @@
 		var row_td5_input = document.createElement('input');
 		row_td5_input.setAttribute("id", "col_remove_" + lineCount);
 		row_td5_input.setAttribute("type", "button");
-		row_td5_input.setAttribute("value", "삭제" + lineCount);
+		row_td5_input.setAttribute("value", "삭제");
 		row_td5_input.setAttribute("onclick", "Delete_row(" + lineCount + ")");
 
 		row_td5.appendChild(row_td5_input);
@@ -180,6 +217,6 @@
 
 		//테이블 완성
 		table.appendChild(row);
-
+		$("#colnum").val(lineCount);
 	}
 </script>

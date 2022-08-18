@@ -1,16 +1,16 @@
-package dbcontrol;
+package DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+import Beans.DTO.Table_Keyoption_DTO;
+import Beans.DTO.Table_col_DTO;
 import common.*;
-import dbcontrol.DTO.Table_Keyoption_DTO;
-import dbcontrol.DTO.Table_col_DTO;
 
 public class Table_function implements Table_ctrl {
-	DB_Executer_DAO db = new DB_Executer_DAO();
+	DB_Executer db = new DB_Executer();
 
 	// 옵션 빈값 확인
 	public static String Option_chk(String query, String option) {
@@ -164,16 +164,28 @@ public class Table_function implements Table_ctrl {
 	public String Create_query(String tablename, String tableexplain, ArrayList coldata, Table_Keyoption_DTO keyoption) {
 		String table_id = setTableId();
 		String query = "CREATE TABLE `gradprj`.`" + table_id + "` (\n";
+		Table_Keyoption_DTO k_option = (Table_Keyoption_DTO) keyoption;
+		boolean query_fin = false;
+
 		// col명 추가
 		for (int i = 0; i < coldata.size(); i++) {
 			Table_col_DTO temp = (Table_col_DTO) coldata.get(i);
 			query += "`" + temp.name + "`";
 			query += " " + temp.type;
-			query += " " + temp.option + ",\n";
+			query += " " + temp.option;
+
+			//키값 여부가 하나도 없을 시 ,적용 안함
+			if ((k_option.pk.length == 0)&&(k_option.uq.length == 0)) {
+				if(coldata.size()-1 == i){
+					query_fin = true;
+				}else{
+					query += ",\n";
+				}
+			}
 		}
 
 		// Key들 추가
-		Table_Keyoption_DTO k_option = (Table_Keyoption_DTO) keyoption;
+
 
 		if (k_option.pk.length > 0) {
 			query += "PRIMARY KEY(";
@@ -181,17 +193,25 @@ public class Table_function implements Table_ctrl {
 			for (int i = 0; i < k_option.pk.length; i++) {
 				query += "`" + k_option.pk[i];
 				if (i == (k_option.pk.length - 1)) {
-					query += "`),\n";
+					if ((k_option.uq.length == 0)){
+						query += "`)\n";
+						query_fin = true;
+					}else{
+						query += "`),\n";
+					}
+
 				} else {
 					query += "`,";
 				}
 			}
 		}
+
 		// uq추가
-		for (int i = 0; i < k_option.pk.length; i++) {
-			query += "UNIQUE INDEX `" + k_option.pk[i] + "_UNIQUE` (`" + k_option.pk[i] + "` ASC) VISIBLE";
-			if (i == (k_option.pk.length - 1)) {
+		for (int i = 0; i < k_option.uq.length; i++) {
+			query += "UNIQUE INDEX `" + k_option.uq[i] + "_UNIQUE` (`" + k_option.uq[i] + "` ASC) VISIBLE";
+			if (i == (k_option.uq.length - 1)) {
 				query += ");\n";
+				query_fin = true;
 			} else {
 				query += ",\n";
 			}
@@ -200,7 +220,10 @@ public class Table_function implements Table_ctrl {
 //		for (int i = 0; i < k_option.pk.length; i++) {
 //
 //		}
-		
+
+		if(query_fin){
+			query+=");";
+		}
 		String col[] = { "table_id", "table_name", "table_explain" };
 		String val[] = { table_id, tablename, tableexplain };
 		db.DB_Ex_query_nr(Insert_query("datatable_list", col, val));

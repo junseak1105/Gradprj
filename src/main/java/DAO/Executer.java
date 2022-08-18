@@ -1,4 +1,4 @@
-package dbcontrol;
+package DAO;
 
 import java.sql.ResultSet;
 

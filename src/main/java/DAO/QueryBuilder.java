@@ -1,9 +1,9 @@
-package dbcontrol;
+package DAO;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import dbcontrol.DTO.Table_Keyoption_DTO;
+import Beans.DTO.Table_Keyoption_DTO;
 
 public interface QueryBuilder {
 	public String Select_query(String db,String col[],String option);//db명,col명,where option

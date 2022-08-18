@@ -1,14 +1,15 @@
-package dbcontrol;
+package DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import dbcontrol.DTO.Table_Keyoption_DTO;
-import dbcontrol.DTO.Table_col_DTO;
+import Beans.DTO.Table_Keyoption_DTO;
+import Beans.DTO.Table_col_DTO;
+import common.JDBC_conn;
 
-public class DB_Executer_DAO extends JDBC_conn implements Executer {
+public class DB_Executer extends JDBC_conn implements Executer {
 	private static PreparedStatement pstmt;
 	private static ResultSet rs = null;
 
