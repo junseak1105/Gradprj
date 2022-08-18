@@ -19,7 +19,7 @@
 <form action="droptable.jsp">
     <input type="submit" value="droptable">
 </form>
-<form action="gettableinfo.jsp">
+<form action="addpage.jsp">
     <input type="submit" value="gettableinfo">
 </form>
 </body>
