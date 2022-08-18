@@ -80,10 +80,9 @@
       			type : "POST",            // HTTP method type(GET, POST) 형식이다.
       			url : "/Gradprj/CreateNewTable",      // 컨트롤러에서 대기중인 URL 주소이다.
       			data : formData,     // Json 형식의 데이터이다.
-      			dataType:'json',
+      			//dataType:'json',
       			success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
-
-      				document.getElementById("testoutput").innerHTML= JSON.stringify(data);
+      				//document.getElementById("testoutput").innerHTML= JSON.stringify(data);
       			},
       			error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로   들어옵니다.
           			alert("통신 실패.")

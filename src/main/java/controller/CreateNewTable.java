@@ -68,26 +68,13 @@ public class CreateNewTable extends HttpServlet {
 			col_d_list.add(new Table_col_DTO(colname,type,NN));
 			
 		}
-		
 
-//		Enumeration en = request.getParameterNames();
-//		
-//		while(en.hasMoreElements()) {
-//			String temp = (String)en.nextElement();
-//			System.out.println(temp+":"+request.getParameter(temp));
-//			json.put(temp, request.getParameter(temp));
-//		}
-		
-//		col_d_list.add(new Table_col_data("test_col1", "int", "Not Null"));
-//		col_d_list.add(new Table_col_data("test_col2", "int", "Not Null"));
-//		col_d_list.add(new Table_col_data("test_col3", "varchar(30)", "Not Null"));
-//		col_d_list.add(new Table_col_data("test_col4", "varchar(30)", "Not Null"));
 
 		String pk[] = {};
 		String uq[] = {};
 		String fk[] = {};
 		Table_Keyoption_DTO koption = new Table_Keyoption_DTO(pk, uq, fk);
-		String query = tf.Create_query("testtable", "testexplain",col_d_list, null);
+		String query = tf.Create_query(request.getParameter("tablename"), request.getParameter("tableexplain"),col_d_list, null);
 		System.out.println(query);
 
 //		json.put("query", query);
