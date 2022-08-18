@@ -152,7 +152,7 @@
 		$("#colnum").val(lineCount);
 	}
 
-	function AddCol() {
+	function AddCol() { //컬럼 추가 기능
 
 		//namelist: colname_1,type_1,NN_1,PK_1,UQ_1
 		lineCount++;
@@ -164,6 +164,7 @@
 		row_td1.setAttribute("id", "col_view_no_" + lineCount);
 		row_td1.innerHTML = lineCount;
 		row.appendChild(row_td1);
+
 
 		//콜롬명 입력칸
 		let row_td2 = document.createElement('td');

@@ -19,5 +19,8 @@
 <form action="droptable.jsp">
     <input type="submit" value="droptable">
 </form>
+<form action="gettableinfo.jsp">
+    <input type="submit" value="gettableinfo">
+</form>
 </body>
 </html>

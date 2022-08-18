@@ -22,7 +22,7 @@ public class Table_function implements Table_ctrl {
 
 	@Override
 	public ResultSet getTableInfo(String table) {
-		String query = "select * from datatable_info where table_id='" + table + "';";
+		String query = "select *,(select table_name from datatable_list where datatable_info.table_id='" + table + "') as table_name from datatable_info where table_id='" + table + "';";
 		return db.DB_Ex_query(query);
 	}
 
@@ -68,13 +68,17 @@ public class Table_function implements Table_ctrl {
 
 	@Override
 	public String setTableInfo(ArrayList coldata, Table_Keyoption_DTO keyoption) {
+
+		/*
+			table_content 작성방식: 컬럼1,0/컬럼2,1
+		 */
 		String tableinfo = "";
 		String[] fk_list = keyoption.fk; // fk 조건 미작성
 
 		for (int i = 0; i < coldata.size(); i++) {
 			Table_col_DTO temp = (Table_col_DTO) coldata.get(i); // name type option
 			tableinfo += (temp.name);
-			if (temp.option.contains("not null")) {
+			if (temp.option.contains("Not Null")) {
 				tableinfo += ",1";
 			} else {
 				tableinfo += ",0";
@@ -185,8 +189,6 @@ public class Table_function implements Table_ctrl {
 		}
 
 		// Key들 추가
-
-
 		if (k_option.pk.length > 0) {
 			query += "PRIMARY KEY(";
 			// pk추가
@@ -216,6 +218,7 @@ public class Table_function implements Table_ctrl {
 				query += ",\n";
 			}
 		}
+
 		// fk추가(미작성)
 //		for (int i = 0; i < k_option.pk.length; i++) {
 //
