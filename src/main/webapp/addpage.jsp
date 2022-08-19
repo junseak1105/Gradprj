@@ -9,6 +9,7 @@
          pageEncoding="UTF-8" %>
 
 <html>
+<title>페이지 추가</title>
 <head>
     <%@include file="header.jsp" %>
 </head>
@@ -61,6 +62,7 @@
             let checkbox = document.createElement('input');
             checkbox.setAttribute("type","checkbox");
             checkbox.setAttribute("value",data.columns[key]);
+            checkbox.name="table_col";
             label.appendChild(checkbox);
             colarr.appendChild(label);
         }
@@ -68,15 +70,35 @@
         let temp = document.createElement('input');
         temp.setAttribute("type","button");
         temp.setAttribute("value","출력 값 선택 완료");
-        temp.setAttribute("onclick","Test()");
+        temp.setAttribute("onclick","AddPage()");
 
         colarr.appendChild(temp);
         // data.table_name
         // data.table_id
     }
 
-    function Test() {
-        alert("test");
+    function AddPage() {
+        var checkboxValues = [];
+        $("input[name='table_col']:checked").each(function(i) {
+            checkboxValues.push($(this).val());
+        });
+
+        var allData = {"checkArray": checkboxValues };
+
+        $.ajax({
+            url:"/Gradprj/AddPage",
+            type:'POST',
+            data: allData,
+            success:function(data){
+                alert("완료!");
+                window.opener.location.reload();
+                self.close();
+            },
+            error:function(jqXHR, textStatus, errorThrown){
+                alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+                self.close();
+            }
+        });
     }
 
     //테이블 목록 생성
