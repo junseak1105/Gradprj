@@ -103,7 +103,7 @@
 
     //테이블 목록 생성
     function Get_Table_List() {
-        // json 형식으로 데이터 set
+        // json 형식으로 데이터 sett
 
         // ajax 통신
         //get인 경우 데이터 없이 url에 get방식으로 넣어준다.

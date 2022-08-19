@@ -28,8 +28,5 @@ public class CommonUtil  {
 		return inputvalue;
 	}
 
-	public static String Get_Param(HttpServletRequest request, String input){
-		return null;
-	}
 
 }

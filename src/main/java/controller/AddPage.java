@@ -16,7 +16,7 @@ public class AddPage extends HttpServlet {
 
         //String[] str = request.getParameter("checkArray");
 //        for (int i = 0; i < str.length; i++) {
-//            out.print(str[i]);
+//            out.print(str[i]);d
 //        }
 
 
