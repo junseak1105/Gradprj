@@ -1,12 +1,9 @@
-package DAO;
+package Tables.DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-import Beans.DTO.Table_Keyoption_DTO;
-import Beans.DTO.Table_col_DTO;
 import common.JDBC_conn;
 
 public class DB_Executer extends JDBC_conn implements Executer {

@@ -78,7 +78,7 @@
 			var formData = $("#table_data_frm").serialize();
 			$.ajax({
       			type : "POST",            // HTTP method type(GET, POST) 형식이다.
-      			url : "/Gradprj/CreateNewTable",      // 컨트롤러에서 대기중인 URL 주소이다.
+      			url : "/CreateNewTable",      // 컨트롤러에서 대기중인 URL 주소이다.
       			data : formData,     // Json 형식의 데이터이다.
       			//dataType:'json',
       			success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
@@ -104,7 +104,7 @@
   		//get인 경우 데이터 없이 url에 get방식으로 넣어준다.
   		$.ajax({
       		type : "POST",            // HTTP method type(GET, POST) 형식이다.
-      		url : "/Gradprj/Table_dup_chk",      // 컨트롤러에서 대기중인 URL 주소이다.
+      		url : "/Table_dup_chk",      // 컨트롤러에서 대기중인 URL 주소이다.
       		data : params,     // Json 형식의 데이터이다.
       		dataType:'json',
       		success : function(data){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.

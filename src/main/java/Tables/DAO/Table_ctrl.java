@@ -1,9 +1,9 @@
-package DAO;
+package Tables.DAO;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import Beans.DTO.Table_Keyoption_DTO;
+import Tables.Beans.DTO.Table_Keyoption_DTO;
 
 public interface Table_ctrl extends QueryBuilder {
 	public String setTableId();

@@ -1,14 +1,13 @@
-package controller;
+package Tables.controller;
 
-import DAO.DB_Executer;
-import DAO.Table_function;
+import Tables.DAO.DB_Executer;
+import Tables.DAO.Table_function;
 import org.json.simple.JSONObject;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 @WebServlet(name = "Drop_table", value = "/Drop_table")

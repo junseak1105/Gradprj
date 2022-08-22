@@ -22,5 +22,8 @@
 <form action="addpage.jsp">
     <input type="submit" value="gettableinfo">
 </form>
+<form action="test.jsp">
+    <input type="submit" value="test">
+</form>
 </body>
 </html>

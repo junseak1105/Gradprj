@@ -1,4 +1,4 @@
-package controller;
+package Tables.controller;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

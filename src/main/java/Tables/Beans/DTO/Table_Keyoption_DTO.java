@@ -1,4 +1,4 @@
-package Beans.DTO;
+package Tables.Beans.DTO;
 
 public class Table_Keyoption_DTO {
 	public static String pk[];

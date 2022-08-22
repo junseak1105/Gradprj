@@ -1,11 +1,7 @@
-package controller;
+package Tables.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Tables.Beans.DTO.Table_col_DTO;
 import org.json.simple.JSONObject;
 
-import Beans.DTO.Table_Keyoption_DTO;
-import Beans.DTO.Table_col_DTO;
-import DAO.DB_Executer;
-import DAO.Table_function;
+import Tables.Beans.DTO.Table_Keyoption_DTO;
+import Tables.DAO.DB_Executer;
+import Tables.DAO.Table_function;
 
 /**
  * Servlet implementation class CreateNewTable

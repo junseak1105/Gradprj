@@ -1,18 +1,15 @@
-package controller;
+package Tables.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.json.JsonObject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Tables.DAO.Table_function;
 import org.json.simple.JSONObject;
-
-import DAO.Table_function;
 
 /**
  * Servlet implementation class Table_dup_chk

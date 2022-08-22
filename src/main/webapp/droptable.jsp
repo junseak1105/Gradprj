@@ -37,7 +37,7 @@
 
         $.ajax({
             type: "GET",            // HTTP method type(GET, POST) 형식이다.
-            url: "/Gradprj/Drop_table",      // 컨트롤러에서 대기중인 URL 주소이다.
+            url: "/Drop_table",      // 컨트롤러에서 대기중인 URL 주소이다.
             data: formData,
             dataType:'json',
             success: function (data) { // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
@@ -57,7 +57,7 @@
         //get인 경우 데이터 없이 url에 get방식으로 넣어준다.
         $.ajax({
             type: "GET",            // HTTP method type(GET, POST) 형식이다.
-            url: "/Gradprj/Get_Table_List",      // 컨트롤러에서 대기중인 URL 주소이다.
+            url: "/Get_Table_List",      // 컨트롤러에서 대기중인 URL 주소이다.
             dataType: 'json',
             success: function (data) { // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
                 var table_list = document.getElementById('tablename');

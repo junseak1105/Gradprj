@@ -1,13 +1,13 @@
-package DAO;
+package Tables.DAO;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import Beans.DTO.Table_Keyoption_DTO;
-import Beans.DTO.Table_col_DTO;
-import common.*;
+import Tables.Beans.DTO.Table_Keyoption_DTO;
+import Tables.Beans.DTO.Table_col_DTO;
+import common.CommonUtil;
 
 public class Table_function implements Table_ctrl {
 	DB_Executer db = new DB_Executer();

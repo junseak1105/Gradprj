@@ -1,7 +1,7 @@
-package controller;
+package Tables.controller;
 
-import DAO.DB_Executer;
-import DAO.Table_function;
+import Tables.DAO.DB_Executer;
+import Tables.DAO.Table_function;
 import org.json.simple.JSONObject;
 
 import javax.servlet.*;

@@ -1,9 +1,4 @@
-package DAO;
-
-import java.sql.ResultSet;
-import java.util.ArrayList;
-
-import Beans.DTO.Table_Keyoption_DTO;
+package Tables.DAO;
 
 public interface QueryBuilder {
 	public String Select_query(String db,String col[],String option);//db명,col명,where option
