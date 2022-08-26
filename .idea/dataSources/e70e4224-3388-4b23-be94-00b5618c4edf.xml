@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" dbms="ORACLE" family-id="ORACLE" format-version="4.43">
+    <root id="1">
+      <IntrospectionLevel>3</IntrospectionLevel>
+      <ServerVersion>11.2.0.2.0</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="XE">
+      <Current>1</Current>
+    </schema>
+    <schema id="3" parent="1" name="APEX_040000"/>
+    <schema id="4" parent="1" name="FLOWS_FILES"/>
+    <schema id="5" parent="1" name="HR"/>
+    <schema id="6" parent="1" name="MDSYS"/>
+    <schema id="7" parent="1" name="XDB"/>
+    <schema id="8" parent="1" name="CTXSYS"/>
+    <schema id="9" parent="1" name="APPQOSSYS"/>
+    <schema id="10" parent="1" name="DBSNMP"/>
+    <schema id="11" parent="1" name="ORACLE_OCM"/>
+    <schema id="12" parent="1" name="OUTLN"/>
+    <schema id="13" parent="1" name="SYSTEM"/>
+    <schema id="14" parent="1" name="SYS"/>
+  </database-model>
+</dataSource>
