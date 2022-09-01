@@ -10,8 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63fdc3c8-960b-4975-b790-23f168f006bb" name="Changes" comment="개발 임시 중단(Spring 변경)&#10;중간세이브">
-      <change afterPath="$PROJECT_DIR$/front/src/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/common/CommonUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/common/CommonUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/dc411811-590f-4c1a-82d9-d33c29e0f7e4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/dc411811-590f-4c1a-82d9-d33c29e0f7e4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,13 +100,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "JavaSE-11",
-    "last_opened_file_path": "C:/project/work/eovwork/awsproject",
+    "last_opened_file_path": "C:/DEV/Github/SpringLecture/servlet",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
     "spring.configuration.checksum": "1d2dfe7cbec4cb85764de7dce500cd05",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external"
   },
@@ -139,7 +140,7 @@
       <recent name="common" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ComponentFilterAppConfigTest.filterScan">
+  <component name="RunManager" selected="Tomcat Server.Gradprj_tomcat">
     <configuration name="ApplicationContextInfoTest.findApplicationBean" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="core.test" />
       <extension name="coverage">
@@ -228,7 +229,7 @@
       </method>
     </configuration>
     <configuration name="Gradprj_tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.65" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="UPDATING_POLICY" value="restart-server" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="Gradprj:war">
           <settings>
@@ -440,7 +441,7 @@
       <workItem from="1660888101114" duration="18643000" />
       <workItem from="1661134322902" duration="6858000" />
       <workItem from="1661144156497" duration="2196000" />
-      <workItem from="1661146371222" duration="57434000" />
+      <workItem from="1661146371222" duration="75983000" />
     </task>
     <task id="LOCAL-00001" summary="테이블 생성 기능 완료.ver1&#10;-fk미구현">
       <created>1660787850153</created>
