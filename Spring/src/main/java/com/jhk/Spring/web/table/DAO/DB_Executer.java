@@ -1,10 +1,11 @@
 package com.jhk.Spring.web.table.DAO;
 
+import com.jhk.Spring.common.JDBC_conn;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import common.JDBC_conn;
 
 public class DB_Executer extends JDBC_conn implements Executer {
 	private static PreparedStatement pstmt;

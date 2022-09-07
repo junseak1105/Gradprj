@@ -1,13 +1,14 @@
 package com.jhk.Spring.web.table.DAO;
 
+import com.jhk.Spring.common.CommonUtil;
+import com.jhk.Spring.web.table.bean.Table_Col;
+import com.jhk.Spring.web.table.bean.Table_Key_Option;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-import Tables.Beans.DTO.Table_Keyoption_DTO;
-import Tables.Beans.DTO.Table_col_DTO;
-import common.CommonUtil;
 
 public class Table_function implements Table_ctrl {
 	DB_Executer db = new DB_Executer();
@@ -67,7 +68,7 @@ public class Table_function implements Table_ctrl {
 	}
 
 	@Override
-	public String setTableInfo(ArrayList coldata, Table_Keyoption_DTO keyoption) {
+	public String setTableInfo(ArrayList coldata, Table_Key_Option keyoption) {
 
 		/*
 			table_content 작성방식: 컬럼1,0/컬럼2,1
@@ -76,7 +77,7 @@ public class Table_function implements Table_ctrl {
 		String[] fk_list = keyoption.fk; // fk 조건 미작성
 
 		for (int i = 0; i < coldata.size(); i++) {
-			Table_col_DTO temp = (Table_col_DTO) coldata.get(i); // name type option
+			Table_Col temp = (Table_Col) coldata.get(i); // name type option
 			tableinfo += (temp.name);
 			if (temp.option.contains("Not Null")) {
 				tableinfo += ",1";
@@ -165,15 +166,15 @@ public class Table_function implements Table_ctrl {
 	}
 
 	@Override
-	public String Create_query(String tablename, String tableexplain, ArrayList coldata, Table_Keyoption_DTO keyoption) {
+	public String Create_query(String tablename, String tableexplain, ArrayList coldata, Table_Key_Option keyoption) {
 		String table_id = setTableId();
 		String query = "CREATE TABLE `gradprj`.`" + table_id + "` (\n";
-		Table_Keyoption_DTO k_option = (Table_Keyoption_DTO) keyoption;
+		Table_Key_Option k_option = (Table_Key_Option) keyoption;
 		boolean query_fin = false;
 
 		// col명 추가
 		for (int i = 0; i < coldata.size(); i++) {
-			Table_col_DTO temp = (Table_col_DTO) coldata.get(i);
+			Table_Col temp = (Table_Col) coldata.get(i);
 			query += "`" + temp.name + "`";
 			query += " " + temp.type;
 			query += " " + temp.option;
