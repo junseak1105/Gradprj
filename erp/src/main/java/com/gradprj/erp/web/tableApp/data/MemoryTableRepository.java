@@ -9,7 +9,7 @@ import java.util.Map;
 @Component
 public class MemoryTableRepository implements TableRepository {
 
-    private static Map<String, Table> table_data = new HashMap<>();
+    private static final Map<String, Table> table_data = new HashMap<>();
 
     @Override
     public void save(Table table) {

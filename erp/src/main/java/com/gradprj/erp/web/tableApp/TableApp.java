@@ -18,10 +18,10 @@ import static com.gradprj.erp.web.tableApp.Table_function.convertTableRepository
 public class TableApp extends BaseApp {
 
     //ApplicationContext 생성
-    private static ApplicationContext TableAppConfig = new AnnotationConfigApplicationContext(TableAppConfig.class);
+    private static final ApplicationContext TableAppConfig = new AnnotationConfigApplicationContext(TableAppConfig.class);
     //TableRepository 생성
-    private static Table_Service table_service = TableAppConfig.getBean("table_service", Table_Service.class);
-    private static TableRepository tableRepository = TableAppConfig.getBean("tableRepository", TableRepository.class);
+    private static final Table_Service table_service = TableAppConfig.getBean("table_service", Table_Service.class);
+    private static final TableRepository tableRepository = TableAppConfig.getBean("tableRepository", TableRepository.class);
 
 
 

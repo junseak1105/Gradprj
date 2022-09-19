@@ -24,7 +24,7 @@ public class BaseController {
      * - BaseApp을 통해 모든 App 불러옴
      * - BaseAppConfig에 모든 App Bean 등록
      */
-    private static ApplicationContext baseapp = new AnnotationConfigApplicationContext(BaseAppConfig.class);
+    private static final ApplicationContext baseapp = new AnnotationConfigApplicationContext(BaseAppConfig.class);
 
     /**
      * App생성
