@@ -1,10 +1,11 @@
-package com.gradprj.erp.web.tableApp.service;
+package com.gradprj.erp.web.tableApp.DAO;
 
 
-import com.gradprj.erp.web.tableApp.data.TableRepository;
+import com.gradprj.erp.BaseApp;
+import com.gradprj.erp.web.tableApp.DTO.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Table_Drop_Service implements Table_Control {
+public class Table_Drop_Service extends BaseApp implements Table_Control {
 
     private final TableRepository tableRepository;
 

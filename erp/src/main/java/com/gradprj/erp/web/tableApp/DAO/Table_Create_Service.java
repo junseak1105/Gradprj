@@ -1,16 +1,16 @@
-package com.gradprj.erp.web.tableApp.service;
+package com.gradprj.erp.web.tableApp.DAO;
 
 
-import com.gradprj.erp.web.tableApp.data.Table;
-import com.gradprj.erp.web.tableApp.data.TableRepository;
+import com.gradprj.erp.BaseApp;
+import com.gradprj.erp.web.tableApp.DTO.Table;
+import com.gradprj.erp.web.tableApp.DTO.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 
-import static com.gradprj.erp.BaseApp.db_service;
 import static com.gradprj.erp.common.CommonUtil.IsNull;
 
-public class Table_Create_Service implements Table_Control {
+public class Table_Create_Service extends BaseApp implements Table_Control {
 
     private final TableRepository tableRepository;
 

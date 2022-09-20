@@ -1,15 +1,15 @@
-package com.gradprj.erp.web.tableApp.service;
+package com.gradprj.erp.web.tableApp.DAO;
 
-import com.gradprj.erp.web.tableApp.data.Table;
-import com.gradprj.erp.web.tableApp.data.TableRepository;
+import com.gradprj.erp.BaseApp;
+import com.gradprj.erp.web.tableApp.DTO.Table;
+import com.gradprj.erp.web.tableApp.DTO.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.gradprj.erp.BaseApp.db_service;
 
-public class Table_Get_list_Service implements Table_Control {
+public class Table_Get_list_Service extends BaseApp implements Table_Control {
     private final TableRepository tableRepository;
 
     @Autowired

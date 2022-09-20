@@ -1,14 +1,14 @@
-package com.gradprj.erp.web.tableApp.service;
+package com.gradprj.erp.web.tableApp.DAO;
 
-import com.gradprj.erp.web.tableApp.data.TableRepository;
+import com.gradprj.erp.BaseApp;
+import com.gradprj.erp.web.tableApp.DTO.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.gradprj.erp.BaseApp.db_service;
 
-public class Table_Name_Dupchk_Service implements Table_Control {
+public class Table_Name_Dupchk_Service extends BaseApp implements Table_Control {
 
     private final TableRepository tableRepository;
 
@@ -20,6 +20,7 @@ public class Table_Name_Dupchk_Service implements Table_Control {
     @Override
     public String Execute() throws SQLException {
         String name = tableRepository.getTableName();
+        System.out.println(name);
         ResultSet rs = db_service.DB_Ex_query("select count(*) cnt from information_schema.tables where TABLE_NAME='" + name + "'");
         while (rs.next()) {
             String result = rs.getString("cnt");

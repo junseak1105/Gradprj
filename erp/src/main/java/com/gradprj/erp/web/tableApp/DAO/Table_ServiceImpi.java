@@ -1,17 +1,17 @@
-package com.gradprj.erp.web.tableApp.service;
+package com.gradprj.erp.web.tableApp.DAO;
 
-import com.gradprj.erp.web.tableApp.data.Table;
-import com.gradprj.erp.web.tableApp.data.TableRepository;
+import com.gradprj.erp.BaseApp;
+import com.gradprj.erp.web.tableApp.DTO.Table;
+import com.gradprj.erp.web.tableApp.DTO.TableRepository;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.gradprj.erp.BaseApp.db_service;
 import static com.gradprj.erp.web.tableApp.Table_function.convertJSONtoTable;
 
-public class Table_ServiceImpi implements Table_Service {
+public class Table_ServiceImpi extends BaseApp implements Table_Service {
 
     private final TableRepository tableRepository;
 

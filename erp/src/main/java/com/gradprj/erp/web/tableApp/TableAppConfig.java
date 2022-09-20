@@ -1,9 +1,9 @@
 package com.gradprj.erp.web.tableApp;
 
-import com.gradprj.erp.web.tableApp.data.MemoryTableRepository;
-import com.gradprj.erp.web.tableApp.data.TableRepository;
-import com.gradprj.erp.web.tableApp.service.Table_Service;
-import com.gradprj.erp.web.tableApp.service.*;
+import com.gradprj.erp.web.tableApp.DTO.MemoryTableRepository;
+import com.gradprj.erp.web.tableApp.DTO.TableRepository;
+import com.gradprj.erp.web.tableApp.DAO.Table_Service;
+import com.gradprj.erp.web.tableApp.DAO.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

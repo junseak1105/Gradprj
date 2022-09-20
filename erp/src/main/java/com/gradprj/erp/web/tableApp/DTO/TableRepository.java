@@ -1,4 +1,4 @@
-package com.gradprj.erp.web.tableApp.data;
+package com.gradprj.erp.web.tableApp.DTO;
 
 import java.util.ArrayList;
 import java.util.Map;

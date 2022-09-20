@@ -2,9 +2,9 @@ package com.gradprj.erp.web.tableApp;
 
 
 import com.gradprj.erp.BaseApp;
-import com.gradprj.erp.web.tableApp.data.Table;
-import com.gradprj.erp.web.tableApp.data.TableRepository;
-import com.gradprj.erp.web.tableApp.service.*;
+import com.gradprj.erp.web.tableApp.DTO.Table;
+import com.gradprj.erp.web.tableApp.DTO.TableRepository;
+import com.gradprj.erp.web.tableApp.DAO.*;
 import org.json.simple.JSONObject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -55,7 +55,7 @@ public class TableApp extends BaseApp {
         Table_Control table_name_dupchk = TableAppConfig.getBean("table_name_dupchk_service", Table_Name_Dupchk_Service.class);
 
         //중복체크할 테이블 명 저장
-        table_service.getTableRepository().save(new Table((String)json.get("name"),null,null,null,null,null,null,null));
+        table_service.getTableRepository().save(new Table((String)json.get("name"),"table_info",null,null,null,null,null,(String)json.get("tablecomment")));
 
         //반환을 위해 json 비우기
         json.clear();
@@ -75,7 +75,7 @@ public class TableApp extends BaseApp {
         JSONObject json;
 
         //테이블 정보 가져오기 빈 가져오기
-        Table_Control table_info_get = TableAppConfig.getBean("table_get_service", Table_Get_info_Service.class);
+        Table_Control table_info_get = TableAppConfig.getBean("table_get_info_service", Table_Get_info_Service.class);
 
         //가져올 테이블 명 전달용
         table_service.getTableRepository().save(new Table(name,"table_info",null,null,null,null,null,null));

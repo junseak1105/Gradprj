@@ -1,4 +1,4 @@
-package com.gradprj.erp.web.tableApp.data;
+package com.gradprj.erp.web.tableApp.DTO;
 
 import lombok.Data;
 

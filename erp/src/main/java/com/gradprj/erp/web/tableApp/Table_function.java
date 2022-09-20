@@ -1,7 +1,7 @@
 package com.gradprj.erp.web.tableApp;
 
-import com.gradprj.erp.web.tableApp.data.Table;
-import com.gradprj.erp.web.tableApp.data.TableRepository;
+import com.gradprj.erp.web.tableApp.DTO.Table;
+import com.gradprj.erp.web.tableApp.DTO.TableRepository;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.gradprj.erp.web.tableApp.data;
+package com.gradprj.erp.web.tableApp.DTO;
 
 import org.springframework.stereotype.Component;
 
@@ -29,7 +29,6 @@ public class MemoryTableRepository implements TableRepository {
     @Override
     public String getTableName() {
         return (table_data.get("table_info").getName());
-//        return (table_data.get((String)(((HashMap)table_data).keySet().toArray())[0])).getName();
     }
     @Override
     public String getTableComment() {

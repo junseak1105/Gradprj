@@ -10,14 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * 모든 Controller의 부모 클래스
  */
-@Controller
-public class BaseController {
-
-    @RequestMapping("/")
-    public String index(){
-        System.out.println("index");
-        return "index";
-    }
+public class BaseService {
 
     /**
      * BaseApp생성

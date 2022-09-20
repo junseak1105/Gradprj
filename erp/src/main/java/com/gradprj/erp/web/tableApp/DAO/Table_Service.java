@@ -1,7 +1,7 @@
-package com.gradprj.erp.web.tableApp.service;
+package com.gradprj.erp.web.tableApp.DAO;
 
 
-import com.gradprj.erp.web.tableApp.data.TableRepository;
+import com.gradprj.erp.web.tableApp.DTO.TableRepository;
 import org.json.simple.JSONObject;
 
 import java.sql.SQLException;
