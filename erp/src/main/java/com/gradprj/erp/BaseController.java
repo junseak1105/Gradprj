@@ -1,6 +1,7 @@
 package com.gradprj.erp;
 
 import com.gradprj.erp.web.dbApp.DB_Service;
+import com.gradprj.erp.web.pageApp.PageApp;
 import com.gradprj.erp.web.tableApp.TableApp;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 모든 Controller의 부모 클래스
  */
 @Controller
+@RequestMapping("/")
 public class BaseController {
 
-    @RequestMapping("/")
+    @RequestMapping("")
     public String index(){
         System.out.println("index");
         return "index";
@@ -29,8 +31,10 @@ public class BaseController {
     /**
      * App생성
      */
-    protected static TableApp tableApp = baseapp.getBean("tableApp", TableApp.class);
     public static DB_Service db_service = baseapp.getBean("db_execute_service", DB_Service.class);
+    protected static TableApp tableApp = baseapp.getBean("tableApp", TableApp.class);
+    protected static PageApp pageApp = baseapp.getBean("pageApp", PageApp.class);
+
 
 
 }

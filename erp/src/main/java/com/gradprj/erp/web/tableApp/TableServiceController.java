@@ -1,5 +1,6 @@
 package com.gradprj.erp.web.tableApp;
 
+import com.gradprj.erp.BaseApp;
 import com.gradprj.erp.BaseController;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;

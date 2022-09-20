@@ -14,7 +14,7 @@ public class JDBC_conn {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			System.out.println("드라이버 로딩 성공");
+//			System.out.println("드라이버 로딩 성공");
 		} catch (Exception e) {
 			System.out.println("드라이버 로딩 실패 ");
 			try {
