@@ -17,11 +17,6 @@ public class BaseAppConfig {
     }
 
     @Bean
-    PageApp pageApp() throws Exception {
-        return new PageApp();
-    }
-
-    @Bean
     public DB_Service db_execute_service(){
         return new DB_Service();
     }
