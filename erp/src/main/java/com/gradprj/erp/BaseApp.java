@@ -1,6 +1,7 @@
 package com.gradprj.erp;
 
 
+import com.gradprj.erp.web.pageApp.PageApp;
 import com.gradprj.erp.web.dbApp.DB_Service;
 import com.gradprj.erp.web.tableApp.TableApp;
 import org.springframework.context.ApplicationContext;
@@ -18,8 +19,10 @@ public class BaseApp {
     /**
      * App생성
      */
-    protected static TableApp tableApp = baseapp.getBean("tableApp", TableApp.class);
     protected static DB_Service db_service = baseapp.getBean("db_execute_service", DB_Service.class);
+    protected static TableApp tableApp = baseapp.getBean("tableApp", TableApp.class);
+    protected static PageApp pageApp = baseapp.getBean("pageApp", PageApp.class);
+
 
 
 
