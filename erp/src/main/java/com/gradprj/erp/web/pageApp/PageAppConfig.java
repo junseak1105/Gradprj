@@ -1,9 +1,6 @@
 package com.gradprj.erp.web.pageApp;
 
-import com.gradprj.erp.web.pageApp.DAO.Page_Create_Service;
-import com.gradprj.erp.web.pageApp.DAO.Page_Get_Datagrid_Service;
-import com.gradprj.erp.web.pageApp.DAO.Page_Get_List_Service;
-import com.gradprj.erp.web.pageApp.DAO.Page_Name_Dupchk_Service;
+import com.gradprj.erp.web.pageApp.DAO.*;
 import com.gradprj.erp.web.pageApp.DTO.DatagridRepository;
 import com.gradprj.erp.web.pageApp.DTO.MemoryDatagridRepository;
 import com.gradprj.erp.web.pageApp.DTO.MemoryPageRepository;
@@ -43,4 +40,8 @@ public class PageAppConfig {
     Page_Get_List_Service page_get_list_service() {
         return new Page_Get_List_Service(PageRepository());
     }
+
+    @Bean
+    Page_Get_Category_Service page_get_category_service() { return new Page_Get_Category_Service(PageRepository()); }
+
 }

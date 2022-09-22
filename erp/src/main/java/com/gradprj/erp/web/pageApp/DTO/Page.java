@@ -9,5 +9,6 @@ public class Page {
     private final String page_desc; // Page Description
     private final String page_url; // Page Url
     private final String page_table; // Page Table for datagrid
+    private final String page_category; // Page Category
 
 }

@@ -4,6 +4,7 @@ package com.gradprj.erp.web.pageApp;
 import com.gradprj.erp.BaseApp;
 import com.gradprj.erp.web.pageApp.DAO.*;
 import com.gradprj.erp.web.pageApp.DTO.DatagridRepository;
+import com.gradprj.erp.web.pageApp.DTO.Page;
 import com.gradprj.erp.web.pageApp.DTO.PageRepository;
 import org.json.simple.JSONObject;
 import org.springframework.context.ApplicationContext;
@@ -57,8 +58,26 @@ public class PageApp extends BaseApp {
     }
 
     public ArrayList page_get_list() throws SQLException {
+        pageRepository.deleteAll();
         Page_Service page_get_list = PageAppConfig.getBean("page_get_list_service", Page_Get_List_Service.class);
         page_get_list.Execute();
         return pageRepository.findAll();
+    }
+
+    public ArrayList page_get_category() throws SQLException {
+        pageRepository.deleteAll();
+        Page_Service page_get_category = PageAppConfig.getBean("page_get_category_service", Page_Get_Category_Service.class);
+        page_get_category.Execute();
+        return pageRepository.findAll();
+    }
+
+    public JSONObject Page_create(JSONObject json) throws SQLException {
+        pageRepository.deleteAll();
+        Page_Service page_create = PageAppConfig.getBean("page_create_service", Page_Create_Service.class);
+        pageRepository.save(new Page(Integer.parseInt((String)json.get("idx")),(String) json.get("page_name"),(String)json.get("page_desc"),(String)json.get("page_url"),(String)json.get("page_table"),(String)json.get("page_category")));
+        String result = page_create.Execute();
+        json.clear();
+        json.put("result",result);
+        return json;
     }
 }

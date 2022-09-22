@@ -9,4 +9,5 @@ public interface PageRepository {
 
     ArrayList findAll();
 
+    void deleteAll();
 }

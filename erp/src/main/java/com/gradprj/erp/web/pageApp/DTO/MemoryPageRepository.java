@@ -21,4 +21,9 @@ public class MemoryPageRepository implements PageRepository {
         return page_data;
     }
 
+    @Override
+    public void deleteAll() {
+        page_data.clear();
+    }
+
 }
