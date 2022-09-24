@@ -1,5 +1,22 @@
+<%@ page import="java.io.*, java.util.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%-- 캐싱 방지 --%>
+<%
+	response.setHeader("Cache-Control","no-store");
+	response.setHeader("Pragma","no-cache");
+	response.setDateHeader("Expires",0);
+	if (request.getProtocol().equals("HTTP/1.1"))
+		response.setHeader("Cache-Control", "no-cache");
+%>
+<%
+	Date now = new Date();
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+	String formatedNow = formatter.format(now);
+%>
 
 <%-- JQuery--%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
