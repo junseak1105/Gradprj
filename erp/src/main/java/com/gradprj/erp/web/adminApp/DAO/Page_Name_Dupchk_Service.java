@@ -1,9 +1,7 @@
-package com.gradprj.erp.web.pageApp.DAO;
+package com.gradprj.erp.web.adminApp.DAO;
 
 import com.gradprj.erp.BaseApp;
-import com.gradprj.erp.web.pageApp.DTO.PageRepository;
-import com.gradprj.erp.web.tableApp.DAO.Table_Control;
-import com.gradprj.erp.web.tableApp.DTO.TableRepository;
+import com.gradprj.erp.web.adminApp.DTO.PageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.ResultSet;
@@ -20,7 +18,7 @@ public class Page_Name_Dupchk_Service extends BaseApp implements Page_Service {
     }
 
     @Override
-    public String Execute() throws SQLException {
+    public String Execute(String condition) throws SQLException {
         String name = "";//tableRepository.getTableName();
         ResultSet rs = db_service.DB_Ex_query("select count(*) cnt from information_schema.tables where TABLE_NAME='" + name + "'");
         while (rs.next()) {

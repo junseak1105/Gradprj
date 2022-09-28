@@ -1,9 +1,9 @@
-package com.gradprj.erp.web.pageApp.DAO;
+package com.gradprj.erp.web.adminApp.DAO;
 
 
 import com.gradprj.erp.BaseApp;
-import com.gradprj.erp.web.pageApp.DTO.Datagrid;
-import com.gradprj.erp.web.pageApp.DTO.DatagridRepository;
+import com.gradprj.erp.web.adminApp.DTO.Datagrid;
+import com.gradprj.erp.web.adminApp.DTO.DatagridRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.ResultSet;

@@ -1,11 +1,9 @@
-package com.gradprj.erp.web.pageApp.DAO;
+package com.gradprj.erp.web.adminApp.DAO;
 
 
 import com.gradprj.erp.BaseApp;
-import com.gradprj.erp.web.pageApp.DTO.Datagrid;
-import com.gradprj.erp.web.pageApp.DTO.DatagridRepository;
-import com.gradprj.erp.web.pageApp.DTO.Page;
-import com.gradprj.erp.web.pageApp.DTO.PageRepository;
+import com.gradprj.erp.web.adminApp.DTO.Page;
+import com.gradprj.erp.web.adminApp.DTO.PageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.ResultSet;
@@ -22,7 +20,7 @@ public class Page_Get_List_Service extends BaseApp implements Page_Service {
     }
 
     @Override
-    public String Execute() throws SQLException {
+    public String Execute(String condition) throws SQLException {
         ResultSet rs = db_service.DB_Ex_query("select page_list.idx,page_name,page_desc,concat(base_url,page_url) as page_url, page_table,pc.page_category from page_list left join page_category pc on pc.page_category = page_list.page_category;");
         while (rs.next()) {
             Page page = new Page(

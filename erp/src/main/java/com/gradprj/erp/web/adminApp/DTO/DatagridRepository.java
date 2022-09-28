@@ -1,4 +1,4 @@
-package com.gradprj.erp.web.pageApp.DTO;
+package com.gradprj.erp.web.adminApp.DTO;
 
 public interface DatagridRepository {
 

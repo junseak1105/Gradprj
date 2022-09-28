@@ -11,7 +11,7 @@
 <html>
 <title>페이지 추가</title>
 <head>
-    <%@include file="../header.jsp" %>
+    <%@include file="../injection.jsp" %>
 </head>
 <body>
 <form id="table_data_frm">

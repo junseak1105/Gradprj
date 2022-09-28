@@ -1,10 +1,8 @@
-package com.gradprj.erp.web.pageApp.DTO;
+package com.gradprj.erp.web.adminApp.DTO;
 
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 @Component
 public class MemoryPageRepository implements PageRepository {

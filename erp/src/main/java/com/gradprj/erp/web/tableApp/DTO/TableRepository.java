@@ -14,4 +14,6 @@ public interface TableRepository {
     String getTableComment();
 
     ArrayList<String> getRownames();
+
+    void deleteAll();
 }

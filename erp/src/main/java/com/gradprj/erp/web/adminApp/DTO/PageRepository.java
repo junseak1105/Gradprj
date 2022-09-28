@@ -1,7 +1,6 @@
-package com.gradprj.erp.web.pageApp.DTO;
+package com.gradprj.erp.web.adminApp.DTO;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public interface PageRepository {
 

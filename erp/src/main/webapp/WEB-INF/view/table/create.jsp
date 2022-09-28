@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <%@include file="../header.jsp" %>
+    <%@include file="../injection.jsp" %>
     <script src="/js/table/create.js"></script>
 </head>
 <body>
