@@ -5,11 +5,14 @@ import com.gradprj.erp.BaseApp;
 import com.gradprj.erp.web.tableApp.DTO.Table;
 import com.gradprj.erp.web.tableApp.DTO.TableRepository;
 import com.gradprj.erp.web.tableApp.DAO.*;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import static com.gradprj.erp.web.tableApp.Table_function.convertTableRepositorytoJSON;
 
@@ -33,6 +36,7 @@ public class TableApp extends BaseApp {
      * @throws SQLException
      */
     public String table_create(JSONObject json) throws SQLException {
+        tableRepository.deleteAll();
         //테이블 생성 빈 가져오기
         Table_Control table_create = TableAppConfig.getBean("table_create_service", Table_Create_Service.class);
 
@@ -94,15 +98,26 @@ public class TableApp extends BaseApp {
      * @throws SQLException
      */
 
-    public JSONObject table_get_list() throws SQLException {
-        JSONObject json;
+    public JSONArray table_get_list() throws SQLException {
+        JSONArray json = new JSONArray();
 
         //테이블 목록 가져오기 빈 가져오기
         Table_Control table_list_get = TableAppConfig.getBean("table_get_list_service", Table_Get_list_Service.class);
 
         //테이블 목록 가져오기
         table_list_get.Execute();
-        json = convertTableRepositorytoJSON(tableRepository);
+
+        //tableRepository에 저장된 테이블 목록을 json으로 변환
+        ArrayList rows = tableRepository.getRownames();
+
+        for(int i=0;i<rows.size();i++){
+            Table row = tableRepository.findByField(rows.get(i).toString());
+            HashMap<String,String> rowMap = new HashMap<>();
+            rowMap.put("table_name",row.getField());
+            rowMap.put("table_comment",row.getComment());
+            json.add(rowMap);
+        }
+
         return json;
     }
 

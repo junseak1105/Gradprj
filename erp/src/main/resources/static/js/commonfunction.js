@@ -1,4 +1,4 @@
-
+form_to_json($("#fr_pagelist").serializeArray())
 function form_to_json(form) {
     var json = {};
     $.each(form, function () {

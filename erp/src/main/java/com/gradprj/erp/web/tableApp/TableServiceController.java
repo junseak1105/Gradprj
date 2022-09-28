@@ -1,10 +1,11 @@
 package com.gradprj.erp.web.tableApp;
 
-import com.gradprj.erp.BaseApp;
 import com.gradprj.erp.BaseController;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.SQLException;
 
@@ -12,13 +13,14 @@ import java.sql.SQLException;
 @RequestMapping("/table")
 public class TableServiceController extends BaseController {
 
-    @GetMapping("/create")
-    public String table_create(){
-        System.out.println("table_create");
-        return "/table/create";
+    @RequestMapping("/{urlid}")
+    public ModelAndView page_admin(@PathVariable("urlid") String urlid){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("table/"+urlid);
+        return mv;
     }
 
-    @PostMapping("/service/create")
+    @RequestMapping("/service/create")
     @ResponseBody
     public String create(@RequestBody JSONObject json) throws SQLException {
         tableApp.table_create(json);
@@ -36,8 +38,8 @@ public class TableServiceController extends BaseController {
     @GetMapping("/service/get_list")
     @ResponseBody
     public String get_list() throws SQLException {
-        JSONObject json = tableApp.table_get_list();
-        return json.toJSONString();
+        JSONArray json = tableApp.table_get_list();
+        return json.toString();
     }
 
     @GetMapping("/service/get_info")
