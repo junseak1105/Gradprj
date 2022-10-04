@@ -19,11 +19,10 @@ public class Page_Create_Service extends BaseApp implements Page_Service {
         String query = "INSERT INTO page_list(page_name,page_desc,page_url,page_table,page_category)" +
                 "VALUES('" + page.getPage_name() + "','" + page.getPage_desc() + "','" + page.getPage_url() + "','" + page.getPage_table() + "','" + page.getPage_category() + "')";
         System.out.println(query);
-//        if(db_service.DB_Ex_query_nr(query)){
-//            return "success";
-//        }else{
-//            return "fail";
-//        }
-        return null;
+        if(db_service.DB_Ex_query_nr(query)){
+            return "success";
+        }else{
+            return "fail";
+        }
     }
 }

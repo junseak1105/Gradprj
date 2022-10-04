@@ -3,6 +3,7 @@ package com.gradprj.erp;
 import com.gradprj.erp.web.dbApp.DB_Service;
 import com.gradprj.erp.web.adminApp.AdminApp;
 import com.gradprj.erp.web.tableApp.TableApp;
+import com.gradprj.erp.web.pageApp.PageApp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,6 +20,11 @@ public class BaseAppConfig {
     @Bean
     AdminApp adminApp() throws Exception {
         return new AdminApp();
+    }
+
+    @Bean
+    PageApp pageApp() throws Exception {
+        return new PageApp();
     }
 
     @Bean

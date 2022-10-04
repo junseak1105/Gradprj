@@ -117,9 +117,9 @@ function get_category(){
             $("#fr_pagelist_page_category").append($key_select);
         }
     });
-    $("#fr_pagelist_page_category").change(function () {
-        $("#fr_pagelist_page_url").val("/");
-    });
+    // $("#fr_pagelist_page_category").change(function () {
+    //     $("#fr_pagelist_page_url").val("/");
+    // });
 
 }
 

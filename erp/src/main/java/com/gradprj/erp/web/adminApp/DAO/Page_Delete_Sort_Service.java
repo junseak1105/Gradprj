@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.gradprj.erp.BaseController.db_service;
+import static com.gradprj.erp.BaseApp.db_service;
+
 
 public class Page_Delete_Sort_Service implements Page_Service {
 

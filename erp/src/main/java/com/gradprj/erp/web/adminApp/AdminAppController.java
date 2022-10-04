@@ -1,29 +1,21 @@
 package com.gradprj.erp.web.adminApp;
 
+import com.gradprj.erp.BaseApp;
 import com.gradprj.erp.BaseController;
-import com.gradprj.erp.web.adminApp.DAO.Page_Get_Sort_lv1_Service;
-import com.gradprj.erp.web.adminApp.DAO.Page_Name_Dupchk_Service;
-import com.gradprj.erp.web.adminApp.DTO.Page;
-import com.gradprj.erp.web.adminApp.DTO.Sortcode;
-import com.gradprj.erp.web.adminApp.DTO.SortcodeRepository;
-import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.tags.Param;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * [Page] Controller
  */
 @Controller
 @RequestMapping("/admin")
-public class AdminServiceController extends BaseController {
+public class AdminAppController extends BaseApp {
 
     /**
      * [페이지 이동 매핑] 시작

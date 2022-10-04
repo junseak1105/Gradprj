@@ -1,5 +1,6 @@
 package com.gradprj.erp.web.tableApp;
 
+import com.gradprj.erp.BaseApp;
 import com.gradprj.erp.BaseController;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 
 @Controller
 @RequestMapping("/table")
-public class TableServiceController extends BaseController {
+public class TableAppController extends BaseApp {
 
     @RequestMapping("/{urlid}")
     public ModelAndView page_admin(@PathVariable("urlid") String urlid){

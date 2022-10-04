@@ -31,7 +31,7 @@
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-text">경로</span>
-                        <input type="text" class="form-control" name="page_url" id="fr_pagelist_page_url">
+                        <input type="text" class="form-control" name="page_url" id="fr_pagelist_page_url" value="/">
                     </div>
                     <div class="input-group input-group-lg">
                         <span class="input-group-text">사용테이블</span>

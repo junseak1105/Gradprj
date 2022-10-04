@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.gradprj.erp.BaseController.db_service;
+import static com.gradprj.erp.BaseApp.db_service;
 
 public class Page_Get_Sort_code_Service implements Page_Service {
 
