@@ -27,13 +27,15 @@ public class DB_Service extends JDBC_conn implements Executer {
 
 	// rs미반환
 	@Override
-	public void DB_Ex_query_nr(String query) {
+	public boolean DB_Ex_query_nr(String query) {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.executeUpdate();
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 	}
 

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class TableAppConfig {
 
 
-    @Bean//TableRepository 생성 서비스
+    @Bean//TableService 생성 서비스
     public Table_Service table_service(){
         return new Table_ServiceImpi(new MemoryTableRepository());
     }

@@ -22,6 +22,7 @@ dependencies {
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	runtimeOnly 'mysql:mysql-connector-java'
 	implementation 'javax.servlet:jstl'
+	implementation 'org.springframework.boot:spring-boot-devtools'
 }
 
 test {

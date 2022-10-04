@@ -21,7 +21,8 @@ public class Table_Create_Service extends BaseApp implements Table_Control {
 
     @Override
     public String Execute() {
-        String query = "create table " + tableRepository.getTableName() + "(\n";
+        String query = "create table " + tableRepository.getTableName() + "(\n" +
+                "idx int not null auto_increment primary key,\n";
 
         //row명 fetch
         ArrayList<String> rows = tableRepository.getRownames();
@@ -44,6 +45,7 @@ public class Table_Create_Service extends BaseApp implements Table_Control {
             } else {
                 query += " default '" + row.getDefault() + "'";
             }
+
             query += " " + row.getExtra();
 
             if (i != rows.size() - 1) query += ",\n";
@@ -54,10 +56,16 @@ public class Table_Create_Service extends BaseApp implements Table_Control {
         /**
          * 키 제작 추가 필요
          */
-//        query += "primary key(" + tableRepository.getPrimaryKey() + ")\n";
+        String key = tableRepository.findByField(rows.get(1)).getKey();
+        if (!key.equals("none")) {
+            query += ",code varchar(50) not null\n";
+            query += ",foreign key(code) references " + key + "(code)\n";
+        }
+
+
         query += ")comment '" + tableRepository.getTableComment() + "'";
 
-//        System.out.println(query);
+        System.out.println(query);
 
         db_service.DB_Ex_query_nr(query);
         return null;

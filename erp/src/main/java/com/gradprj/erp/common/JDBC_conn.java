@@ -15,12 +15,12 @@ public class JDBC_conn {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			System.out.println("드라이버 로딩 성공");
-		} catch (Exception e) {
-			System.out.println("드라이버 로딩 실패 ");
-			try {
-				conn.close();
-			} catch (SQLException e1) {
-			}
+		} catch (ClassNotFoundException e) {
+			System.out.println("드라이버 로딩 실패");
+			e.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("DBMS 접속 실패");
+			e.printStackTrace();
 		}
 	}
 

@@ -44,4 +44,9 @@ public class MemoryTableRepository implements TableRepository {
         return keys;
     }
 
+    @Override
+    public void deleteAll() {
+        table_data.clear();
+    }
+
 }

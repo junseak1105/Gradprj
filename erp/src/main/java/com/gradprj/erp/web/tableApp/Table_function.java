@@ -48,15 +48,14 @@ public class Table_function {
         //varchar or char 일때만 길이 받음
         if (type.equals("varchar") || type.equals("char")) {
             type = type + "(" + json.get("length_" + i).toString() + ")";
+        }else{
+            type = type;
         }
         String nullable = IsNull(json.get("null_" + i).toString());
-        String key = IsNull(json.get("key_" + i).toString());
-        //키의 대괄호 제거
-        if (key.length() > 0) {
-            key = key.substring(1, key.length() - 1);
-        }
+        String key = IsNull(json.get("key").toString());
+
         String default_val = IsNull(json.get("default_" + i).toString());
-        String extra = "";//IsNull(json.get("extra_" + i).toString());
+        String extra = IsNull(json.get("extra_" + i).toString());
         String comment = IsNull(json.get("comment_" + i).toString());
         Table table = new Table(
                 name,
