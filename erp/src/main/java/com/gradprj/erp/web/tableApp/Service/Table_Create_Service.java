@@ -1,4 +1,4 @@
-package com.gradprj.erp.web.tableApp.DAO;
+package com.gradprj.erp.web.tableApp.Service;
 
 
 import com.gradprj.erp.BaseApp;
@@ -48,6 +48,8 @@ public class Table_Create_Service extends BaseApp implements Table_Control {
 
             query += " " + row.getExtra();
 
+            query += " comment '" + row.getComment()+"'";
+
             if (i != rows.size() - 1) query += ",\n";
             else query += "\n";
         }
@@ -56,11 +58,15 @@ public class Table_Create_Service extends BaseApp implements Table_Control {
         /**
          * 키 제작 추가 필요
          */
-        String key = tableRepository.findByField(rows.get(1)).getKey();
-        if (!key.equals("none")) {
-            query += ",code varchar(50) not null\n";
-            query += ",foreign key(code) references " + key + "(code)\n";
-        }
+//        String key = tableRepository.findByField(rows.get(1)).getKey();
+//        if (!key.equals("none")) {
+            query += ",sort_lv1 varchar(20) not null comment '대분류'\n";
+            query += ",sort_lv2 varchar(20) not null comment '중분류'\n";
+            query += ",sort_code varchar(20) not null comment '분류코드'\n";
+            query += ",foreign key(sort_lv1) references sort_lv1(sort_lv1)\n";
+            query += ",foreign key(sort_lv2) references sort_lv2(sort_lv2)\n";
+            query += ",foreign key(sort_code) references sort_code(sort_code)\n";
+//        }
 
 
         query += ")comment '" + tableRepository.getTableComment() + "'";

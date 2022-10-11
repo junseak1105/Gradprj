@@ -1,15 +1,15 @@
-package com.gradprj.erp.web.adminApp.DAO;
+package com.gradprj.erp.web.adminApp.Service;
 
 import com.gradprj.erp.BaseApp;
 import com.gradprj.erp.web.adminApp.DTO.Page;
 import com.gradprj.erp.web.adminApp.DTO.PageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Page_Create_Service extends BaseApp implements Page_Service {
+public class Admin_Create_Service extends BaseApp implements Admin_Service {
     private final PageRepository pageRepository;
 
     @Autowired
-    public Page_Create_Service(PageRepository pageRepository) {
+    public Admin_Create_Service(PageRepository pageRepository) {
         this.pageRepository = pageRepository;
     }
 

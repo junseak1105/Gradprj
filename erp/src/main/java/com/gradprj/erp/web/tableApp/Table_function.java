@@ -42,6 +42,7 @@ public class Table_function {
      * extra 미구현
      */
     public static Table convertJSONtoTable(JSONObject json,int i){
+        System.out.println(json);
         String name = IsNull(json.get("name").toString());
         String field = IsNull(json.get("field_" + i).toString());
         String type = IsNull(json.get("type_" + i).toString());
@@ -52,7 +53,7 @@ public class Table_function {
             type = type;
         }
         String nullable = IsNull(json.get("null_" + i).toString());
-        String key = IsNull(json.get("key").toString());
+        String key = "";//IsNull(json.get("key").toString());
 
         String default_val = IsNull(json.get("default_" + i).toString());
         String extra = IsNull(json.get("extra_" + i).toString());

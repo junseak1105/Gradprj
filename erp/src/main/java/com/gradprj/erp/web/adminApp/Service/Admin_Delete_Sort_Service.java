@@ -1,22 +1,20 @@
-package com.gradprj.erp.web.adminApp.DAO;
+package com.gradprj.erp.web.adminApp.Service;
 
 import com.gradprj.erp.web.adminApp.DTO.SortcodeRepository;
-import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static com.gradprj.erp.BaseApp.db_service;
 
 
-public class Page_Delete_Sort_Service implements Page_Service {
+public class Admin_Delete_Sort_Service implements Admin_Service {
 
     private SortcodeRepository sortcodeRepository;
 
     @Autowired
-    public Page_Delete_Sort_Service(SortcodeRepository sortcodeRepository) {
+    public Admin_Delete_Sort_Service(SortcodeRepository sortcodeRepository) {
         this.sortcodeRepository = sortcodeRepository;
     }
 
