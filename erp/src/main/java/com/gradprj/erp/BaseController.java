@@ -21,6 +21,12 @@ public class BaseController {
         return "index";
     }
 
+    @RequestMapping("main")
+    public String main(){
+        System.out.println("main");
+        return "main";
+    }
+
 
 
 }

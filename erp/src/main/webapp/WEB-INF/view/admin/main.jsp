@@ -15,6 +15,7 @@
 </head>
 <body>
 <div class="container">
+    <%@include file="../sidebar.jsp"%>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarNav">
