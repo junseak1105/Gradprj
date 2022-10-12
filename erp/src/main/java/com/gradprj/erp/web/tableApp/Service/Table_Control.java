@@ -1,4 +1,4 @@
-package com.gradprj.erp.web.tableApp.DAO;
+package com.gradprj.erp.web.tableApp.Service;
 
 
 import java.sql.SQLException;

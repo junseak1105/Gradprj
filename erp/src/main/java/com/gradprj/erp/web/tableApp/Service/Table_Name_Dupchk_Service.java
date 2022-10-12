@@ -1,25 +1,26 @@
-package com.gradprj.erp.web.adminApp.DAO;
+package com.gradprj.erp.web.tableApp.Service;
 
 import com.gradprj.erp.BaseApp;
-import com.gradprj.erp.web.adminApp.DTO.PageRepository;
+import com.gradprj.erp.web.tableApp.DTO.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class Page_Name_Dupchk_Service extends BaseApp implements Page_Service {
+public class Table_Name_Dupchk_Service extends BaseApp implements Table_Control {
 
-    private final PageRepository pageRepository;
+    private final TableRepository tableRepository;
 
     @Autowired
-    public Page_Name_Dupchk_Service(PageRepository pageRepository) {
-        this.pageRepository = pageRepository;
+    public Table_Name_Dupchk_Service(TableRepository tableRepository) {
+        this.tableRepository = tableRepository;
     }
 
     @Override
-    public String Execute(String condition) throws SQLException {
-        String name = "";//tableRepository.getTableName();
+    public String Execute() throws SQLException {
+        String name = tableRepository.getTableName();
+        System.out.println(name);
         ResultSet rs = db_service.DB_Ex_query("select count(*) cnt from information_schema.tables where TABLE_NAME='" + name + "'");
         while (rs.next()) {
             String result = rs.getString("cnt");

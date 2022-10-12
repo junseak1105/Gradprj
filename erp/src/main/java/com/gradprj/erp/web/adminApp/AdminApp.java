@@ -2,8 +2,7 @@ package com.gradprj.erp.web.adminApp;
 
 
 import com.gradprj.erp.BaseApp;
-import com.gradprj.erp.web.adminApp.DAO.*;
-import com.gradprj.erp.web.adminApp.DTO.DatagridRepository;
+import com.gradprj.erp.web.adminApp.Service.*;
 import com.gradprj.erp.web.adminApp.DTO.Page;
 import com.gradprj.erp.web.adminApp.DTO.PageRepository;
 import com.gradprj.erp.web.adminApp.DTO.SortcodeRepository;
@@ -34,7 +33,7 @@ public class AdminApp extends BaseApp {
     public String Page_name_dupchk(JSONObject json) throws SQLException {
 
         //테이블 명 중복체크 빈 가져오기
-        Page_Service page_name_dupchk = PageAppConfig.getBean("page_name_dupchk_service", Page_Name_Dupchk_Service.class);
+        Admin_Service page_name_dupchk = PageAppConfig.getBean("page_name_dupchk_service", Admin_Name_Dupchk_Service.class);
 
         //중복체크할 테이블 명 저장
 //        page_name_dupchk.getTableRepository().save(new Table((String)json.get("name"),"table_info",null,null,null,null,null,(String)json.get("tablecomment")));
@@ -49,7 +48,7 @@ public class AdminApp extends BaseApp {
 
     public String page_get_list() throws SQLException {
         pageRepository.deleteAll();
-        Page_Service page_get_list = PageAppConfig.getBean("page_get_list_service", Page_Get_List_Service.class);
+        Admin_Service page_get_list = PageAppConfig.getBean("page_get_list_service", Admin_Get_List_Service.class);
         page_get_list.Execute("");
 
         JSONArray json = new JSONArray();
@@ -72,47 +71,52 @@ public class AdminApp extends BaseApp {
     }
 
     public String page_get_category() throws SQLException {
-        Page_Service page_get_category = PageAppConfig.getBean("page_get_category_service", Page_Get_Category_Service.class);
+        Admin_Service page_get_category = PageAppConfig.getBean("page_get_category_service", Admin_Get_Category_Service.class);
         return page_get_category.Execute("");
     }
 
     public String page_get_sort_lv1() throws SQLException {
-        Page_Service page_get_sort_lv1 = PageAppConfig.getBean("page_get_sort_lv1_service", Page_Get_Sort_lv1_Service.class);
+        Admin_Service page_get_sort_lv1 = PageAppConfig.getBean("page_get_sort_lv1_service", Admin_Get_Sort_lv1_Service.class);
         String result = page_get_sort_lv1.Execute("");
         return result;
     }
     public String page_get_sort_lv2(String sort_lv1) throws SQLException {
-        Page_Service page_get_sort_lv2 = PageAppConfig.getBean("page_get_sort_lv2_service", Page_Get_Sort_lv2_Service.class);
+        Admin_Service page_get_sort_lv2 = PageAppConfig.getBean("page_get_sort_lv2_service", Admin_Get_Sort_lv2_Service.class);
         String result = page_get_sort_lv2.Execute("where sort_lv1 = '" + sort_lv1+"'");
         return result;
     }
     public String page_get_sort_code(String sort_lv1, String sort_lv2) throws SQLException {
-        Page_Service page_get_sort_code = PageAppConfig.getBean("page_get_sort_code_service", Page_Get_Sort_code_Service.class);
-        String result = page_get_sort_code.Execute("where sort_lv1 = '" + sort_lv1+"' and sort_lv2 = '" + sort_lv2+"'");
-        return result;
+        Admin_Service page_get_sort_code = PageAppConfig.getBean("page_get_sort_code_service", Admin_Get_Sort_code_Service.class);
+        if(sort_lv2.equals("")) {
+            String result = page_get_sort_code.Execute(" ");
+            return result;
+        }else{
+            String result = page_get_sort_code.Execute("where sort_lv1 = '" + sort_lv1+"' and sort_lv2 = '" + sort_lv2+"'");
+            return result;
+        }
     }
     public String page_delete_sort(String code) throws SQLException {
-        Page_Service page_delete_sort = PageAppConfig.getBean("page_delete_sort_service", Page_Delete_Sort_Service.class);
+        Admin_Service page_delete_sort = PageAppConfig.getBean("page_delete_sort_service", Admin_Delete_Sort_Service.class);
         String result = page_delete_sort.Execute("delete from sort_lv1 where sort_lv1 = '"+code+"'");
         return result;
     }
 
 
     public String page_delete_sort(String sort_lv1,String code) throws SQLException {
-        Page_Service page_delete_sort = PageAppConfig.getBean("page_delete_sort_service", Page_Delete_Sort_Service.class);
+        Admin_Service page_delete_sort = PageAppConfig.getBean("page_delete_sort_service", Admin_Delete_Sort_Service.class);
         String result = page_delete_sort.Execute("delete from sort_lv2 where sort_lv1 = '"+sort_lv1+"' and sort_lv2 = '"+code+"'");
         return result;
     }
 
     public String page_delete_sort(String sort_lv1,String sort_lv2,String code) throws SQLException {
-        Page_Service page_delete_sort = PageAppConfig.getBean("page_delete_sort_service", Page_Delete_Sort_Service.class);
+        Admin_Service page_delete_sort = PageAppConfig.getBean("page_delete_sort_service", Admin_Delete_Sort_Service.class);
         String result = page_delete_sort.Execute("delete from sort_code where sort_lv1 = '"+sort_lv1+"' and sort_lv2 = '"+sort_lv2+"' and sort_code = '"+code+"'");
         return result;
     }
 
     public String Page_create(JSONObject json) throws SQLException {
         pageRepository.deleteAll();
-        Page_Service page_create = PageAppConfig.getBean("page_create_service", Page_Create_Service.class);
+        Admin_Service page_create = PageAppConfig.getBean("page_create_service", Admin_Create_Service.class);
         pageRepository.save(new Page(Integer.parseInt((String)json.get("idx")),(String) json.get("page_name"),(String)json.get("page_desc"),(String)json.get("page_url"),(String)json.get("page_table"),(String)json.get("page_category")));
         String result = page_create.Execute("");
         json.clear();

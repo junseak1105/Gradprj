@@ -4,7 +4,7 @@ package com.gradprj.erp.web.tableApp;
 import com.gradprj.erp.BaseApp;
 import com.gradprj.erp.web.tableApp.DTO.Table;
 import com.gradprj.erp.web.tableApp.DTO.TableRepository;
-import com.gradprj.erp.web.tableApp.DAO.*;
+import com.gradprj.erp.web.tableApp.Service.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.context.ApplicationContext;

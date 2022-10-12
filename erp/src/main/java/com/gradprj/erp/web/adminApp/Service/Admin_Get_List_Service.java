@@ -1,4 +1,4 @@
-package com.gradprj.erp.web.adminApp.DAO;
+package com.gradprj.erp.web.adminApp.Service;
 
 
 import com.gradprj.erp.BaseApp;
@@ -10,12 +10,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class Page_Get_List_Service extends BaseApp implements Page_Service {
+public class Admin_Get_List_Service extends BaseApp implements Admin_Service {
 
     private final PageRepository pageRepository;
 
     @Autowired
-    public Page_Get_List_Service(PageRepository pageRepository) {
+    public Admin_Get_List_Service(PageRepository pageRepository) {
         this.pageRepository = pageRepository;
     }
 

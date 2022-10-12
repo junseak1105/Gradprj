@@ -1,4 +1,4 @@
-package com.gradprj.erp.web.adminApp.DAO;
+package com.gradprj.erp.web.adminApp.Service;
 
 import com.gradprj.erp.web.adminApp.DTO.SortcodeRepository;
 import org.json.simple.JSONArray;
@@ -10,12 +10,12 @@ import java.sql.SQLException;
 
 import static com.gradprj.erp.BaseApp.db_service;
 
-public class Page_Get_Sort_code_Service implements Page_Service {
+public class Admin_Get_Sort_code_Service implements Admin_Service {
 
     private SortcodeRepository sortcodeRepository;
 
     @Autowired
-    public Page_Get_Sort_code_Service(SortcodeRepository sortcodeRepository) {
+    public Admin_Get_Sort_code_Service(SortcodeRepository sortcodeRepository) {
         this.sortcodeRepository = sortcodeRepository;
     }
 
