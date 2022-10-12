@@ -43,6 +43,8 @@ public class PageAppController extends BaseApp {
         switch (path) {
             case "save":
                 return pageApp.SaveData(json);
+            case "delete":
+                return pageApp.DeleteData(json);
             default:
                 return "error";
         }

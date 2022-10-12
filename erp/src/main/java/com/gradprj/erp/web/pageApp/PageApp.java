@@ -57,4 +57,12 @@ public class PageApp extends BaseApp {
         json.put("table_name",page_get_tablename.Execute(json.get("pagename").toString()));
         return save_data.Execute(json.toJSONString());
     }
+
+    public String DeleteData(JSONObject json) throws Exception {
+        log.info("DeleteData");
+        Datagrid_Delete_Data delete_data = PageAppConfig.getBean(Datagrid_Delete_Data.class);
+        Page_Get_Tablename page_get_tablename = PageAppConfig.getBean(Page_Get_Tablename.class);
+        json.put("table_name",page_get_tablename.Execute(json.get("pagename").toString()));
+        return delete_data.Execute(json.toJSONString());
+    }
 }

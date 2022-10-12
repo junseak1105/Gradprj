@@ -15,6 +15,7 @@ public class Datagrid_Save_Data implements Page_Service {
     public String Execute(String json) throws Exception {
         JSONObject result = new JSONObject();
         JSONObject data = (JSONObject) org.json.simple.JSONValue.parse(json);
+        String query ="";
 //        System.out.println(data.get("formdata").getClass());
 //        System.out.println(data.get("columns"));
 
@@ -34,17 +35,31 @@ public class Datagrid_Save_Data implements Page_Service {
 
         }
 
-
-        String query = "insert into " + data.get("table_name");
-        String field = "(";
-        String value = " values(";
-        for (String col : column_names) {
-            field += col + ",";
-            value += "'"+formdata.get(col) + "',";
+        switch (formdata.get("fr_data_status")) {
+            case "update":
+                query = "update " + data.get("table_name") + " set ";
+                for (int i = 0; i < column_names.size(); i++) {
+                    query += column_names.get(i) + "='" + formdata.get(column_names.get(i)) + "'";
+                    if (i != column_names.size() - 1) {
+                        query += ",";
+                    }
+                }
+                query += " where idx='" + formdata.get("idx") + "'";
+                break;
+            case "new":
+                query = "insert into " + data.get("table_name");
+                String field = "(";
+                String value = " values(";
+                for (String col : column_names) {
+                    field += col + ",";
+                    value += "'"+formdata.get(col) + "',";
+                }
+                field = field.substring(0, field.length() - 1) + ")";
+                value = value.substring(0, value.length() - 1) + ")";
+                query = query + field + value;
+                break;
         }
-        field = field.substring(0, field.length() - 1) + ")";
-        value = value.substring(0, value.length() - 1) + ")";
-        query = query + field + value;
+
         System.out.println(query);
         if(db_service.DB_Ex_query_nr(query)){
             result.put("result","success");

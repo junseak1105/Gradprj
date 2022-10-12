@@ -177,12 +177,15 @@ function set_dg() {
                         switch (column_name) {
                             case "sort_lv1":
                                 $("#sort_lv1").combogrid('setValue', row.sort_lv1);
+                                $("#fr_data_sort_lv1").val(row.sort_lv1);
                                 break;
                             case "sort_lv2":
                                 $("#sort_lv2").combogrid('setValue', row.sort_lv2);
+                                $("#fr_data_sort_lv2").val(row.sort_lv2);
                                 break;
                             case "sort_code":
                                 $("#sort_code").combogrid('setValue', row.sort_code);
+                                $("#fr_data_sort_code").val(row.sort_code);
                                 break;
                         }
                     } else {
@@ -266,6 +269,7 @@ function fr_data_delete() {
             console.log(data);
             if (data.result == "success") {
                 alert("삭제되었습니다.");
+                fr_data_clear();
                 reload_dg();
             } else {
                 alert("삭제에 실패하였습니다.");
