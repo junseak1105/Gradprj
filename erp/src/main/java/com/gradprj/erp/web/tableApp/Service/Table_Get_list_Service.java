@@ -18,7 +18,15 @@ public class Table_Get_list_Service extends BaseApp implements Table_Control {
     }
     @Override
     public String Execute() throws SQLException {
-        ResultSet rs = db_service.DB_Ex_query("select * from information_schema.tables where table_schema = 'gradprj'");
+        //제외할 시스템 테이블 목록
+        String[] extable = {"sort_code","sort_lv1","sort_lv2","page_category","page_list"};
+        String query ="select * from information_schema.tables where table_schema = 'gradprj'";
+        for (String s : extable) {
+            query += " and table_name != '" + s + "'";
+        }
+
+        ResultSet rs = db_service.DB_Ex_query(query);
+
         while (rs.next()) {
 //            System.out.println("table name : " + rs.getString("TABLE_NAME"));
             Table table = new Table(

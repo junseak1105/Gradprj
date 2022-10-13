@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">테이블 정보 </h3>
@@ -38,10 +38,6 @@
                             </span>
                         <input type="hidden" name="colnumcnt" id="fr_table_create_colnumcnt"/>
                         <table id="fr_table_create_New_table"></table>
-                    </div>
-                    <div class="input-group input-group-lg">
-                        <span class="input-group-text">분류 추가</span>
-                        <div id="foreign_key"></div>
                     </div>
 
                     <div class="input-group input-group-lg">

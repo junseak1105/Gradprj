@@ -27,7 +27,6 @@ public class Admin_Get_Category_Service extends BaseApp implements Admin_Service
         while (rs.next()) {
             JSONObject page_json = new JSONObject();
             page_json.put("idx", Integer.parseInt(rs.getString("idx")));
-            page_json.put("page_url", rs.getString("base_url"));
             page_json.put("page_category", rs.getString("page_category"));
             json.put(page_json);
         }

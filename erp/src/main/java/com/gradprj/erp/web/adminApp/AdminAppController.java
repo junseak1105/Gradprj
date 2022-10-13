@@ -70,6 +70,10 @@ public class AdminAppController extends BaseApp {
             case "delete_sort_code":
                 result = adminApp.page_delete_sort(request.getParameter("sort_lv1"),request.getParameter("sort_lv2"),request.getParameter("sort_code"));
                 break;
+            case "delete_page":
+
+                result = adminApp.Page_delete(request.getParameter("idx"));
+                break;
         }
         return result;
     }

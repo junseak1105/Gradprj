@@ -4,7 +4,6 @@ var Table_dup_chk = false; //테이블 중복확인
 $(document).ready(function () {//시작시 세팅
     lineCount = 0;
     $("#fr_table_create_colnumcnt").val(lineCount);
-    get_sort_category();
     set_dg_tablelist();
 });
 
@@ -36,7 +35,11 @@ function set_dg_tablelist(){
         columns: [[
             {field: 'table_name', title: '테이블 명', width: 150},
             {field: 'table_comment', title: '테이블 설명', width: 150}
-        ]]
+        ]],
+        onClickRow: function (rowIndex, rowData) {
+            $("#fr_table_create_name").val(rowData.table_name);
+            $("#fr_table_create_tablecomment").val(rowData.table_comment);
+        }
     });
 }//e:set_dg_pagecategory()
 
@@ -50,25 +53,7 @@ function fr_table_create_clear() {
     ClearCol();
 }//e:fr_table_create_clear()
 
-/**
- * 3.get_sort_category() : 테이블 카테고리 목록 가져오기
- */
-function get_sort_category(){
-    $.ajax({
-        url: "/admin/service/get_sort_category",
-        type: "GET",
-        dataType: "json",
-        success: function (data) {
-            var $key_select = $("<select></select>").attr("name", "key").attr("class", "form-select");
-            $key_select.append($("<option>없음</option>").attr("value", "none"));
-            for (var i = 0; i < data.length; i++) {
-                var $key_select_option = $("<option></option>").attr("value", data[i].sort_code_table).text(data[i].sort_lv1_desc);
-                $key_select.append($key_select_option);
-            }
-            $("#foreign_key").append($key_select);
-        }
-    });
-}
+
 
 /**
  * 4.check_form() : 테이블 생성 폼 체크

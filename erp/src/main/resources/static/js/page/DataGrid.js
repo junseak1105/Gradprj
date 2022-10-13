@@ -157,6 +157,7 @@ function set_dg() {
         pagination: true,
         striped: true,
         pageSize: 10,
+        width: '100%',
         pageList: [10, 20, 30, 40, 50],
         columns: [columns],
         onClickRow: function (index, row) {

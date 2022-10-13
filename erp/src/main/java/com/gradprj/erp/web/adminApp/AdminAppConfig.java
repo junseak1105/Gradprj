@@ -58,4 +58,8 @@ public class AdminAppConfig {
         return new Admin_Delete_Sort_Service(SortcodeRepository());
     }
 
+    @Bean
+    Admin_Delete_Page_Service page_delete_page_service() {
+        return new Admin_Delete_Page_Service();
+    }
 }

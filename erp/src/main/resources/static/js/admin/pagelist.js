@@ -28,7 +28,6 @@ function set_dg_pagelist(){
             {field: 'idx', checkbox: true},
             {field: 'page_name', title: '페이지명', width: 100},
             {field: 'page_desc', title: '설명', width: 100},
-            {field: 'page_url', title: '경로', width: 100},
             {field: 'page_table', title: '사용테이블', width: 100},
             {field: 'page_category', title: '분류', width: 100}
         ]],
@@ -37,9 +36,9 @@ function set_dg_pagelist(){
             $("#fr_pagelist_idx").val(row.idx);
             $("#fr_pagelist_page_name").val(row.page_name);
             $("#fr_pagelist_page_desc").val(row.page_desc);
-            $("#fr_pagelist_page_url").val(row.page_url);
             $("#fr_pagelist_page_table").children().val(row.page_table);
             $("#fr_pagelist_page_category").children().attr("value",row.page_category);
+            $("#btn_page_delete").show();
         }
     });
 }//e: set_dg_pagelist()
@@ -52,10 +51,9 @@ function fr_pagelist_clear() {
     $("#fr_pagelist_idx").val("-1");
     $("#fr_pagelist_page_name").val("");
     $("#fr_pagelist_page_desc").val("");
-    $("#fr_pagelist_page_url").val("");
     $("#fr_pagelist_page_table").children().val("");
     $("#fr_pagelist_page_category").children().val("");
-    $("#base_url").val("");
+    $("#btn_page_delete").hide();
 }//e:fr_pagelist_clear()
 
 /**
@@ -87,6 +85,28 @@ function fr_pagelist_save(){
     });
 }//e:fr_pagelist_save()
 
+function fr_pagelist_delete(){
+    var idx = $("#fr_pagelist_idx").val();
+    if(idx == -1){
+        alert("삭제할 페이지를 선택해주세요.");
+        return;
+    }
+    $.ajax({
+        url: "/admin/service/simplex/delete_page?idx="+idx,
+        type: 'get',
+        dataType:'json',
+        contentType: 'application/json',
+        success: function (data) {
+            if(data.result == "success"){
+                alert("삭제되었습니다.");
+                $('#dg_pagelist').datagrid('reload');
+                fr_pagelist_clear();
+            }else{
+                alert("삭제에 실패하였습니다.");
+            }
+        }
+    });
+}
 /**
  * 페이지 목록 데이터그리드 관리 끝
  * ======================================================

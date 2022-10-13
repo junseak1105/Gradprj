@@ -2,7 +2,7 @@
 <%@include file="../injection.jsp" %>
 <script src="/js/admin/pagelist.js?<%=formatedNow%>"></script>
 <div class="pagelist" style="height: 30%">
-    <div class="col-md-8">
+    <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">페이지 목록</h3>
@@ -30,10 +30,6 @@
                         <input type="text" class="form-control" name="page_desc" id="fr_pagelist_page_desc">
                     </div>
                     <div class="input-group input-group-lg">
-                        <span class="input-group-text">경로</span>
-                        <input type="text" class="form-control" name="page_url" id="fr_pagelist_page_url" value="/">
-                    </div>
-                    <div class="input-group input-group-lg">
                         <span class="input-group-text">사용테이블</span>
                         <div id="fr_pagelist_page_table"></div>
                     </div>
@@ -45,6 +41,9 @@
                     </button>
                     <button type="button" class="btn btn-success" id="btn_page_add" onclick="fr_pagelist_clear()">
                         추가
+                    </button>
+                    <button type="button" class="btn btn-danger" id="btn_page_delete" onclick="fr_pagelist_delete()" style="display: none">
+                        삭제
                     </button>
 
                 </form>

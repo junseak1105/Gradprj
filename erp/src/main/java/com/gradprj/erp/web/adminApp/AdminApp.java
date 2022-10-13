@@ -60,7 +60,6 @@ public class AdminApp extends BaseApp {
             page_json.put("idx", page.getIdx());
             page_json.put("page_name", page.getPage_name());
             page_json.put("page_desc", page.getPage_desc());
-            page_json.put("page_url", page.getPage_url());
             page_json.put("page_table", page.getPage_table());
             page_json.put("page_category", page.getPage_category());
 
@@ -117,10 +116,17 @@ public class AdminApp extends BaseApp {
     public String Page_create(JSONObject json) throws SQLException {
         pageRepository.deleteAll();
         Admin_Service page_create = PageAppConfig.getBean("page_create_service", Admin_Create_Service.class);
-        pageRepository.save(new Page(Integer.parseInt((String)json.get("idx")),(String) json.get("page_name"),(String)json.get("page_desc"),(String)json.get("page_url"),(String)json.get("page_table"),(String)json.get("page_category")));
+        pageRepository.save(new Page(Integer.parseInt((String)json.get("idx")),(String) json.get("page_name"),(String)json.get("page_desc"),(String)json.get("page_table"),(String)json.get("page_category")));
         String result = page_create.Execute("");
         json.clear();
         json.put("result",result);
         return json.toJSONString();
+    }
+
+    public String Page_delete(String idx) throws SQLException {
+        System.out.println("idx : " + idx);
+        Admin_Service page_delete = PageAppConfig.getBean("page_delete_page_service", Admin_Delete_Page_Service.class);
+        String result = page_delete.Execute("where idx = "+idx);
+        return result;
     }
 }

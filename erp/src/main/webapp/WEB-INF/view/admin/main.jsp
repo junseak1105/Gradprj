@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <style>
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
 </style>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,8 +9,8 @@
     <script src="/js/admin/main.js?<%=formatedNow%>"></script>
 </head>
 <body>
-<div class="container">
-    <%@include file="../sidebar.jsp"%>
+<%@include file="../sidebar.jsp"%>
+<div class="container" style="margin-left: 0px; margin-right: 0px;width: 100%">
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarNav">

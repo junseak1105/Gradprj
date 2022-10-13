@@ -24,7 +24,7 @@ public class BaseController {
     @RequestMapping("main")
     public String main(){
         System.out.println("main");
-        return "main";
+        return "/page/main";
     }
 
 

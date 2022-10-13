@@ -2,7 +2,7 @@
 <%@include file="../injection.jsp" %>
 <script src="/js/admin/sortcategory.js?<%=formatedNow%>"></script>
 <div id="sort_control" style="height: 30%">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">대분류</h3>
@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">중분류</h3>
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">분류 코드</h3>

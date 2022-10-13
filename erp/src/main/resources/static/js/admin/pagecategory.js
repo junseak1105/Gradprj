@@ -23,7 +23,6 @@ function set_dg_pagecategory(){
         columns: [[
             {field: 'idx', checkbox: false},
             {field: 'page_category', title: '분류명', width: 150},
-            {field: 'page_url', title: '경로', width: 150},
             {
                 field: 'Operation', title: ' 삭제 ', width: 80,
                 formatter: function (value, rec, index) {
