@@ -1,7 +1,7 @@
 package com.gradprj.erp.controller;
 
 import com.gradprj.erp.service.TableService;
-import io.swagger.annotations.Api;
+import com.gradprj.erp.service.TableServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -9,7 +9,6 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.spring.web.json.Json;
 
 import java.sql.SQLException;
 

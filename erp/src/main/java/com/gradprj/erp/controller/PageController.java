@@ -2,6 +2,7 @@ package com.gradprj.erp.controller;
 
 
 import com.gradprj.erp.service.PageService;
+import com.gradprj.erp.service.PageServiceImpl;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -17,7 +18,7 @@ import java.sql.SQLException;
 public class PageController {
 
     @Autowired
-    PageService pageService;
+    private PageService pageService;
 
     @ApiOperation(value = "페이지 추가", notes = "동작방식 작성중")
     @ApiResponses({
