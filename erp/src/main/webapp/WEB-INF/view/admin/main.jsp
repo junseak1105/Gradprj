@@ -25,7 +25,7 @@
                         <button class="btn btn-outline-secondary" onclick="show_content($(this).val())" value="sortcategory">분류 수정</button>
                     </li>
                     <li class="nav-item">
-                        <button class="btn btn-outline-secondary" onclick="show_content($(this).val())" value="../table/table">테이블 수정</button>
+                        <button class="btn btn-outline-secondary" onclick="show_content($(this).val())" value="../api/table/new">테이블 수정</button>
                     </li>
                 </ul>
             </div>
