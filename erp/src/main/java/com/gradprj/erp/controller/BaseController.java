@@ -20,12 +20,6 @@ import java.sql.SQLException;
 @Log4j2
 public class BaseController {
 
-    @GetMapping("/")
-    public String index(){
-        log.info("index");
-        return "index";
-    }
-
     @GetMapping("/api/usage")
     public String api() { return "redirect:/swagger-ui/index.html"; }
 
@@ -47,7 +41,4 @@ public class BaseController {
         mv.setViewName("page/datagrid");
         return mv;
     }
-
-
-
 }

@@ -1,4 +1,4 @@
-package com.gradprj.erp.domain;
+package com.gradprj.erp.domain.Table;
 
 import org.springframework.stereotype.Component;
 

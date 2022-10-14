@@ -1,6 +1,6 @@
 package com.gradprj.erp.service;
 
-import com.gradprj.erp.domain.PageDataRepository;
+import com.gradprj.erp.domain.DataGrid.PageDataRepository;
 import lombok.extern.log4j.Log4j2;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -114,8 +114,6 @@ public class DatagridService {
         data.put("table_name", getTableName(data.get("pagename").toString()));
         JSONObject result = new JSONObject();
         String query ="";
-//        System.out.println(data.get("formdata").getClass());
-//        System.out.println(data.get("columns"));
 
         List<String> column_names = new ArrayList();
         JSONArray columns = (JSONArray) data.get("columns");

@@ -1,4 +1,4 @@
-package com.gradprj.erp.domain;
+package com.gradprj.erp.domain.DataGrid;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

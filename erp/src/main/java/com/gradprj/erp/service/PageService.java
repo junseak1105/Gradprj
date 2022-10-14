@@ -1,7 +1,7 @@
 package com.gradprj.erp.service;
 
-import com.gradprj.erp.domain.Page;
-import com.gradprj.erp.domain.PageRepository;
+import com.gradprj.erp.domain.Page.Page;
+import com.gradprj.erp.domain.Page.PageRepository;
 import lombok.extern.log4j.Log4j2;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;

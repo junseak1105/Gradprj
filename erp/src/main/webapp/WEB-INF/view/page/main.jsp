@@ -9,8 +9,6 @@
 <body>
 <div><%@include file="../sidebar.jsp"%></div>
 
-<a href="/admin/main">어드민페이지</a>
-
 </body>
 <footer>
     <%@include file="../footer.jsp" %>

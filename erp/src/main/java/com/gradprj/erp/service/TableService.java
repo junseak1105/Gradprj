@@ -1,7 +1,7 @@
 package com.gradprj.erp.service;
 
-import com.gradprj.erp.domain.Table;
-import com.gradprj.erp.domain.TableRepository;
+import com.gradprj.erp.domain.Table.Table;
+import com.gradprj.erp.domain.Table.TableRepository;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

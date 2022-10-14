@@ -1,4 +1,4 @@
-package com.gradprj.erp.domain;
+package com.gradprj.erp.domain.Page;
 
 import lombok.Data;
 
