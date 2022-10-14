@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>페이지</title>
     <%@include file="../injection.jsp" %>
-    <script>var pagename = "<%=request.getParameter("pagename")%>"</script>
+    <script>var pagename = "${pagename}"</script>
     <script src="/js/page/DataGrid.js"></script>
 </head>
 <body>
@@ -15,7 +15,7 @@
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><%=request.getParameter("pagename")%></h3>
+                    <h3 class="panel-title">${pagename}</h3>
                 </div>
                 <div id="dg"></div>
             </div>

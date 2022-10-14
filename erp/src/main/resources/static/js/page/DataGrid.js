@@ -7,7 +7,7 @@ $().ready(function () {
  * 페이지 첫 시작시 데이터 가져오고 그리드 생성, 그리드에 로드, 폼 생성
  */
 function get_data() {
-    var url = "/page/service/page?pagename=" + pagename;
+    var url = "../api/datagrid/getData?pagename=" + pagename;
     $.ajax({
         url: url,
         type: 'get',
@@ -28,7 +28,7 @@ function get_data() {
  * 그리드에 데이터 로드(새로고침)
  */
 function reload_dg(){
-    var url = "/page/service/page?pagename=" + pagename;
+    var url = "../api/datagrid/getData?pagename=" + pagename;
     $.ajax({
         url: url,
         type: 'get',
@@ -77,7 +77,7 @@ function set_dg() {
                             {"field": "sort_lv1", "title": "대분류코드", "width": 100},
                             {"field": "sort_lv1_desc", "title": "대분류명", "width": 100}
                         ];
-                        var url = '/admin/service/simplex/get_sort_lv1';
+                        var url = '../api/sortcode/getSortLv1';
                         $("#sort_lv1").combogrid({
                             delay: 500,
                             mode: 'remote',
@@ -89,7 +89,7 @@ function set_dg() {
                             onSelect: function (index, row) {
                                 $("#fr_data_sort_lv1").val(row.sort_lv1);
                                 $('#sort_lv2').combogrid({
-                                    url: '/admin/service/simplex/get_sort_lv2?sort_lv1='+row.sort_lv1
+                                    url: '../api/sortcode/getSortLv2?sort_lv1='+row.sort_lv1
                                 });
                                 $('#sort_code').combogrid({
                                     loadData: []
@@ -114,7 +114,7 @@ function set_dg() {
                             onSelect: function (index, row) {
                                 $("#fr_data_sort_lv2").val(row.sort_lv2);
                                 $('#sort_code').combogrid({
-                                    url: '/admin/service/simplex/get_sort_code?sort_lv1='+row.sort_lv1+'&sort_lv2='+row.sort_lv2
+                                    url: '../api/sortcode/getSortCode?sort_lv1='+row.sort_lv1+'&sort_lv2='+row.sort_lv2
                                 });
                             }
                         });
@@ -228,7 +228,7 @@ function fr_data_save() {
 
     // console.log(JSON.stringify(json));
     $.ajax({
-        url: "/page/service/edit/save",
+        url: "../api/datagrid/saveData",
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',
@@ -261,7 +261,7 @@ function fr_data_delete() {
 
     // console.log(JSON.stringify(json));
     $.ajax({
-        url: "/page/service/edit/delete",
+        url: "../api/datagrid/deleteData",
         type: 'post',
         dataType: 'json',
         contentType: 'application/json',

@@ -13,7 +13,7 @@ $(document).ready(function () {
  */
 function set_dg_pagecategory(){
     $('#dg_pagecategory').datagrid({
-        url: '/admin/service/simplex/get_page_category',
+        url: '../api/page/getPageCategory',
         method: 'get',
         fitColumns: false,
         singleSelect: false,
@@ -41,7 +41,7 @@ function deletePageCategory(idx, page_category) {
     //미구현
     if(confirm(page_category + "를 정말로 삭제하시겠습니까?")){
         $.ajax({
-            url: '/page/service/duplex/delete_page_category',
+            url: '../api/page/deletePageCategory',
             type: 'post',
             data: {
                 idx: idx

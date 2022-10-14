@@ -25,7 +25,7 @@ $(document).ready(function () {//시작시 세팅
  */
 function set_dg_tablelist(){
     $('#dg_tablelist').datagrid({
-        url: '/table/service/get_list',
+        url: '../api/table/getTableList',
         method: 'get',
         fitColumns: false,
         singleSelect: false,
@@ -105,7 +105,7 @@ function Submit() {
             // alert(form_to_json($("#fr_table_create").serializeArray()));
             $.ajax({
                 type: "POST",            // HTTP method type(GET, POST) 형식이다.
-                url: "/table/service/create",       // 컨트롤러에서 대기중인 URL 주소이다.
+                url: "../api/table/createTable",       // 컨트롤러에서 대기중인 URL 주소이다.
                 data: form_to_json($("#fr_table_create").serializeArray()),            // Json 형식의 데이터이다.
                 dataType: 'json',          //text,html,xml,csv 등
                 contentType: 'application/json',
@@ -134,7 +134,7 @@ function Table_dup_chk_func() {
     }else {
         $.ajax({
             type: "POST",            // HTTP method type(GET, POST) 형식이다.
-            url: "/table/service/name_dupchk",       // 컨트롤러에서 대기중인 URL 주소이다.
+            url: "../api/table/nameDupchk",       // 컨트롤러에서 대기중인 URL 주소이다.
             data: form_to_json($("#fr_table_create").serializeArray()),            // Json 형식의 데이터이다.
             dataType: 'json',          //text,html,xml,csv 등
             contentType: 'application/json',

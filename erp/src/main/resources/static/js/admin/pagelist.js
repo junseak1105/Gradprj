@@ -16,7 +16,7 @@ $(document).ready(function () {
  */
 function set_dg_pagelist(){
     $('#dg_pagelist').datagrid({
-        url: '/admin/service/simplex/get_page_list',
+        url: '../api/page/getPageList',
         method: 'get',
         rownumbers: true,
         singleSelect: true,
@@ -63,9 +63,9 @@ function fr_pagelist_save(){
     var status = $("#fr_pagelist_status").val(); //new, update
     var url = "";
     if(status == "new"){
-        url = "/admin/service/duplex/create_page";
+        url = "../api/page/addPage";
     }else{
-        url = "/admin/service/duplex/update_page";
+        url = "../api/page/addPage";
     }
     $.ajax({
         url: url,
@@ -92,8 +92,9 @@ function fr_pagelist_delete(){
         return;
     }
     $.ajax({
-        url: "/admin/service/simplex/delete_page?idx="+idx,
-        type: 'get',
+        url: "../api/page/service/deletePage",
+        data: form_to_json($("#fr_pagelist").serializeArray()),
+        type: 'post',
         dataType:'json',
         contentType: 'application/json',
         success: function (data) {
@@ -123,7 +124,7 @@ function fr_pagelist_delete(){
  */
 function get_category(){
     $.ajax({
-        url: "/admin/service/simplex/get_page_category",
+        url: "../api/page/get/PageCategory",
         type: "GET",
         dataType: "json",
         success: function (data) {
@@ -148,7 +149,7 @@ function get_category(){
  */
 function get_tablelist(){
     $.ajax({
-        url: "/table/service/get_list",
+        url: "../api/table/get/getTableList",
         type: "GET",
         dataType: "json",
         success: function (data) {

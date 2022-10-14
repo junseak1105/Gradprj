@@ -17,7 +17,7 @@ $(document).ready(function () {
  */
 function set_dg_sort_lv1(){
     $('#dg_sort_lv1').datagrid({
-        url: '/admin/service/simplex/get_sort_lv1',
+        url: '../api/sortcode/getSortLv1',
         method: 'get',
         fitColumns: false,
         singleSelect: true,
@@ -88,7 +88,8 @@ function set_dg_sort_lv2(){
  */
 function get_dg_sort_lv2(sort_lv1){
     $('#dg_sort_lv2').datagrid({
-        url: '/admin/service/simplex/get_sort_lv2?sort_lv1='+sort_lv1
+        url: '../api/sortcode/getSortLv2?sort_lv1='+sort_lv1,
+        method: 'get'
     });
 }//e:get_dg_sortcode()
 
@@ -136,7 +137,8 @@ function set_dg_sort_code(){
  */
 function get_dg_sort_code(sort_lv1,sort_lv2){
     $('#dg_sort_code').datagrid({
-        url: '/admin/service/simplex/get_sort_code?sort_lv1='+sort_lv1+'&sort_lv2='+sort_lv2
+        url: '../api/sortcode/getSortCode?sort_lv1='+sort_lv1+'&sort_lv2='+sort_lv2,
+        method: 'get'
     });
 }//e:get_dg_sortcode()
 /**
@@ -148,13 +150,13 @@ function get_dg_sort_code(sort_lv1,sort_lv2){
  * delete_sort : 분류 삭제
  */
 function delete_sort_lv1(sort_lv1){
-    delete_sort("/admin/service/simplex/delete_sort_lv1?sort_lv1="+sort_lv1);
+    delete_sort("../api/sortcode/deleteSortLv1?sort_lv1="+sort_lv1);
 }
 function delete_sort_lv2(sort_lv1,sort_lv2){
-    delete_sort("/admin/service/simplex/delete_sort_lv2?sort_lv1="+sort_lv1+"&sort_lv2="+sort_lv2);
+    delete_sort("../api/sortcode/deleteSortLv2?sort_lv1="+sort_lv1+"&sort_lv2="+sort_lv2);
 }
 function delete_sort_code(sort_lv1,sort_lv2,sort_code){
-    delete_sort("/admin/service/simplex/delete_sort_code?sort_lv1="+sort_lv1+"&sort_lv2="+sort_lv2+"&sort_code="+sort_code);
+    delete_sort("../api/sortcode/deleteSortCode?sort_lv1="+sort_lv1+"&sort_lv2="+sort_lv2+"&sort_code="+sort_code);
 }
 function delete_sort(url){
     if(confirm("정말로 삭제하시겠습니까? 하위 분류코드 또한 전체 삭제됩니다.")){
