@@ -15,3 +15,12 @@ function form_to_json(form) {
     return JSON.stringify(json);
 }
 
+function show_content(value){
+    $.ajax({
+        url: value,
+        type: "GET",
+        success: function (data) {
+            $("#page-wrapper").html(data);
+        }
+    });
+}

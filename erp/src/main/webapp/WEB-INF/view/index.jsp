@@ -3,7 +3,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>페이지</title>
-    <%@include file="injection.jsp" %>
 </head>
 <body>
 <div class="content">
@@ -50,7 +49,4 @@
     </div>
 </div>
 </body>
-<footer>
-    <%@include file="footer.jsp" %>
-</footer>
 </html>

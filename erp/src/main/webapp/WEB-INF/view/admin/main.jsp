@@ -1,15 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<html>
-<style>
-</style>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>관리자 페이지</title>
-    <%@include file="../injection.jsp" %>
-    <script src="/js/admin/main.js?<%=formatedNow%>"></script>
-</head>
-<body>
-<%@include file="../sidebar.jsp"%>
+    <%@include file="../includes/header.jsp" %>
 <div class="container" style="margin-left: 0px; margin-right: 0px;width: 100%">
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -31,10 +21,4 @@
             </div>
         </div>
     </nav>
-    <div id="content"></div>
-</div>
-</body>
-<footer>
-    <%@include file="../footer.jsp" %>
-</footer>
-</html>
+    <%@include file="../includes/footer.jsp" %>

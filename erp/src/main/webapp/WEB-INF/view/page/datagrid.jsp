@@ -1,17 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>페이지</title>
-    <%@include file="../injection.jsp" %>
+
+    <%@include file="../includes/header.jsp" %>
     <script>var pagename = "${pagename}"</script>
     <script src="/js/page/DataGrid.js"></script>
-</head>
-<body>
 <div id="container">
     <div id="header"></div>
     <div id="content">
-        <%@include file="../sidebar.jsp" %>
         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -52,12 +46,4 @@
 
     </div>
 </div>
-</div>
-<div id="footer"></div>
-</div>
-
-</body>
-<footer>
-    <%@include file="../footer.jsp" %>
-</footer>
-</html>
+    <%@include file="../includes/footer.jsp" %>

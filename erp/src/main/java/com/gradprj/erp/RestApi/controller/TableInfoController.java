@@ -1,6 +1,6 @@
 package com.gradprj.erp.RestApi.controller;
 
-import com.gradprj.erp.RestApi.service.TableInfoService;
+import com.gradprj.erp.RestApi.service.TableInfo_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TableInfoController {
 
     @Autowired
-    private TableInfoService tableInfoService;
+    private TableInfo_Service tableInfoService;
 
     @GetMapping("/tableinfo/{table_name}")
     public ResponseEntity getTableInfo(@PathVariable String table_name){
