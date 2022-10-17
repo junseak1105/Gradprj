@@ -28,7 +28,7 @@ public class SwaggerConfig {
                 .consumes(getConsumeContentTypes())
                 .produces(getProduceContentTypes())
                 .apiInfo(swaggerInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("com.gradprj.erp.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.gradprj.erp"))
                 .paths(PathSelectors.any())
                 .build()
                 .useDefaultResponseMessages(false);
