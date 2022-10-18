@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 @Service
 public class TableData_Service {
@@ -20,13 +21,29 @@ public class TableData_Service {
     @Autowired
     private TableData_Mapper tableData_mapper;
 
-    public DefaultRes deleteData(String table_name, String pk_name, String pk_value){
-        tableData_mapper.delete(table_name, pk_name, pk_value);
+    public DefaultRes deleteData(String table_name, String key_column, String selected){
+        String set = "";
+        StringTokenizer st = new StringTokenizer(selected, ",");
+        while (st.hasMoreTokens()) {
+            tableData_mapper.delete(table_name, key_column, st.nextToken());
+        }
         return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_found);
     }
 
     public DefaultRes saveData(String table_name, String column,String value){
         tableData_mapper.save(table_name, column, value);
+        return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_found);
+    }
+
+    public DefaultRes updateData(String table_name, String column,String value, String key_column,String key_value){
+        StringTokenizer st = new StringTokenizer(column, ",");
+        StringTokenizer st2 = new StringTokenizer(value, ",");
+        String set = "";
+        while(st.hasMoreTokens()){
+            set += st.nextToken() + " = " + st2.nextToken() + ", ";
+        }
+        set = set.substring(0, set.length()-2);
+        tableData_mapper.update(table_name, set, key_column, key_value);
         return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_found);
     }
 

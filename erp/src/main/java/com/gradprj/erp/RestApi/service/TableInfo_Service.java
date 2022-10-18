@@ -9,7 +9,9 @@ import com.gradprj.erp.config.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TableInfo_Service {
@@ -17,10 +19,23 @@ public class TableInfo_Service {
     @Autowired
     private TableInfo_Mapper tableInfo_mapper;
 
-    public DefaultRes getTableInfo(String table_name){
+    public Map getTableInfo(String table_name) {
+        Map<String, Object> resultMap = new HashMap<>();
         List<TableInfo> tableInfoList = tableInfo_mapper.getFks(table_name);
-        if(tableInfoList.isEmpty())
-            return DefaultRes.res(StatusCode.NOT_FOUND, ResponseMessages.Data_Empty, tableInfoList);
-        return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_found, tableInfoList);
+        resultMap.put("data", tableInfoList);
+        for (TableInfo tableInfo : tableInfoList) {
+            if (tableInfo.getRef_Table() != null) {
+                Map<String,Object> refTableInfo = new HashMap<>();
+                refTableInfo.put("info", tableInfo_mapper.getFks(tableInfo.getRef_Table()));
+                refTableInfo.put("data", tableInfo_mapper.getTableInfo(tableInfo.getRef_Table()));
+                resultMap.put(tableInfo.getRef_Table(), refTableInfo);
+            }
+        }
+
+        return resultMap;
+    }
+
+    public String getKeyColumn(String tablename) {
+        return tableInfo_mapper.getFks(tablename).get(0).getColumn_Name();
     }
 }

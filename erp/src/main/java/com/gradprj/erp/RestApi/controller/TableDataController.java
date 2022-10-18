@@ -2,6 +2,8 @@ package com.gradprj.erp.RestApi.controller;
 
 import com.gradprj.erp.RestApi.service.TableData_Service;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.log4j.Log4j2;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/data")
+@Log4j2
 public class TableDataController {
 
     @Autowired
@@ -30,8 +33,20 @@ public class TableDataController {
 
     @PostMapping("/save/{table_name}")
     @ResponseBody
-    public ResponseEntity saveTableData(@PathVariable String table_name, @RequestParam String column, @RequestParam String value){
-        return new ResponseEntity(tableData_service.saveData(table_name,column,value), HttpStatus.OK);
+    public ResponseEntity saveTableData(@PathVariable String table_name, @RequestBody JSONObject data){
+        return new ResponseEntity(tableData_service.saveData(table_name, (String) data.get("column"), (String) data.get("value")), HttpStatus.OK);
+    }
+
+    @PutMapping("/update/{table_name}")
+    @ResponseBody
+    public ResponseEntity updateTableData(@PathVariable String table_name, @RequestBody JSONObject data){
+        return new ResponseEntity(tableData_service.updateData(table_name, (String) data.get("column"), (String) data.get("value"),(String)data.get("key_column"),(String)data.get("key_value")), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{table_name}")
+    @ResponseBody
+    public ResponseEntity deleteTableData(@PathVariable String table_name, @RequestBody JSONObject data){
+        return new ResponseEntity(tableData_service.deleteData(table_name, (String) data.get("key_column"), (String) data.get("selected")), HttpStatus.OK);
     }
 
 }

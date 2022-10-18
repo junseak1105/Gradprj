@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Component
@@ -13,5 +14,8 @@ public interface TableInfo_Mapper {
 
     @Select("call get_fks(#{table_name})")
     List<TableInfo> getFks(String table_name);
+
+    @Select("select * from ${table_name}")
+    List<Map<String,String>> getTableInfo(String table_name);
 
 }
