@@ -22,43 +22,60 @@ public class TableData_Service {
     private TableData_Mapper tableData_mapper;
 
     public DefaultRes deleteData(String table_name, String key_column, String selected){
-        String set = "";
+        String where = "";
         StringTokenizer st = new StringTokenizer(selected, ",");
+        //다중 한번에 처리문 필요
         while (st.hasMoreTokens()) {
-            tableData_mapper.delete(table_name, key_column, st.nextToken());
+            where += key_column + " = " + st.nextToken() + " OR ";
         }
-        return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_found);
+        where = where.substring(0, where.length() - 4);
+        if(tableData_mapper.delete(table_name, where)){
+            return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_deleted);
+        }
+        return DefaultRes.res(StatusCode.DB_ERROR, ResponseMessages.DB_ERROR);
     }
 
     public DefaultRes saveData(String table_name, String column,String value){
-        tableData_mapper.save(table_name, column, value);
-        return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_found);
+        if(tableData_mapper.save(table_name, column, value)){
+            return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_saved);
+        }
+        return DefaultRes.res(StatusCode.DB_ERROR, ResponseMessages.DB_ERROR);
     }
 
     public DefaultRes updateData(String table_name, String column,String value, String key_column,String key_value){
         StringTokenizer st = new StringTokenizer(column, ",");
         StringTokenizer st2 = new StringTokenizer(value, ",");
-        String set = "";
-        while(st.hasMoreTokens()){
-            set += st.nextToken() + " = " + st2.nextToken() + ", ";
+        while (st.hasMoreTokens()) {
+            if(!tableData_mapper.update(table_name, st.nextToken(), st2.nextToken(), key_column, "'"+key_value+"'")){
+                return DefaultRes.res(StatusCode.DB_ERROR, ResponseMessages.DB_ERROR);
+            }
         }
-        set = set.substring(0, set.length()-2);
-        tableData_mapper.update(table_name, set, key_column, key_value);
-        return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_found);
+        return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_updated);
+
+//        String set = "";
+//        while(st.hasMoreTokens()){
+//            set += st.nextToken() + " = " + st2.nextToken() + ", ";
+//        }
+//        set = set.substring(0, set.length()-2);
+
+//        if(tableData_mapper.update(table_name, set, key_column, key_value)){
+//            return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_updated);
+//        }
+//        return DefaultRes.res(StatusCode.DB_ERROR, ResponseMessages.DB_ERROR);
     }
 
     public DefaultRes getData(String table_name, String key, String value, String order){
         List<Map<String,String>> tableDataList = tableData_mapper.findByKey(table_name, key, value, order);
         if(tableDataList.isEmpty())
-            return DefaultRes.res(StatusCode.NOT_FOUND, ResponseMessages.Data_Empty, tableDataList);
-        return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_found, tableDataList);
+            return DefaultRes.res(StatusCode.DB_ERROR, ResponseMessages.Data_Empty, tableDataList);
+        return DefaultRes.res(StatusCode.OK, ResponseMessages.DB_ERROR, tableDataList);
     }
 
 
     public DefaultRes getAllData(String table_name){
         List<Map<String,String>> tableDataList = tableData_mapper.findAll(table_name);
         if(tableDataList.isEmpty())
-            return DefaultRes.res(StatusCode.NOT_FOUND, ResponseMessages.Data_Empty, tableDataList);
+            return DefaultRes.res(StatusCode.DB_ERROR, ResponseMessages.Data_Empty, tableDataList);
         return DefaultRes.res(StatusCode.OK, ResponseMessages.Data_found, tableDataList);
     }
 }

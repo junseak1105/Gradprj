@@ -1,6 +1,7 @@
 package com.gradprj.erp.RestApi.controller;
 
 import com.gradprj.erp.RestApi.service.TableData_Service;
+import com.gradprj.erp.config.DefaultRes;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
 import org.json.simple.JSONObject;
@@ -33,8 +34,8 @@ public class TableDataController {
 
     @PostMapping("/save/{table_name}")
     @ResponseBody
-    public ResponseEntity saveTableData(@PathVariable String table_name, @RequestBody JSONObject data){
-        return new ResponseEntity(tableData_service.saveData(table_name, (String) data.get("column"), (String) data.get("value")), HttpStatus.OK);
+    public DefaultRes saveTableData(@PathVariable String table_name, @RequestBody JSONObject data){
+        return tableData_service.saveData(table_name, (String) data.get("column"), (String) data.get("value"));
     }
 
     @PutMapping("/update/{table_name}")

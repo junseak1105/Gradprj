@@ -10,6 +10,7 @@ public class TableInfo {
     private String Data_Length;
     private String Column_Key;
     private String Column_Comment;
+    private String Is_Nullable;
     private String Ref_Table;
 
 }

@@ -21,12 +21,12 @@ public class TableInfo_Service {
 
     public Map getTableInfo(String table_name) {
         Map<String, Object> resultMap = new HashMap<>();
-        List<TableInfo> tableInfoList = tableInfo_mapper.getFks(table_name);
+        List<TableInfo> tableInfoList = tableInfo_mapper.get_table_info(table_name);
         resultMap.put("data", tableInfoList);
         for (TableInfo tableInfo : tableInfoList) {
             if (tableInfo.getRef_Table() != null) {
                 Map<String,Object> refTableInfo = new HashMap<>();
-                refTableInfo.put("info", tableInfo_mapper.getFks(tableInfo.getRef_Table()));
+                refTableInfo.put("info", tableInfo_mapper.get_table_info(tableInfo.getRef_Table()));
                 refTableInfo.put("data", tableInfo_mapper.getTableInfo(tableInfo.getRef_Table()));
                 resultMap.put(tableInfo.getRef_Table(), refTableInfo);
             }
@@ -36,6 +36,6 @@ public class TableInfo_Service {
     }
 
     public String getKeyColumn(String tablename) {
-        return tableInfo_mapper.getFks(tablename).get(0).getColumn_Name();
+        return tableInfo_mapper.get_table_info(tablename).get(0).getColumn_Name();
     }
 }

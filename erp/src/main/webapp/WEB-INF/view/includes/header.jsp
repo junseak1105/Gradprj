@@ -339,25 +339,25 @@
                         <a href="#"><i class="fa fa-files-o fa-fw"></i> 관리자<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="javascript:void(0);" onclick="show_content('/list/sm_zipcode');" >우편번호</a>
+                                <a href="javascript:void(0);" onclick="set_content('/list/sm_zipcode');" >우편번호</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" onclick="show_content('/list/sm_company_reg');" >회사</a>
+                                <a href="javascript:void(0);" onclick="set_content('/list/sm_company_reg');" >회사</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" onclick="show_content('/list/sm_department_reg');" >부서</a>
+                                <a href="javascript:void(0);" onclick="set_content('/list/sm_department_reg');" >부서</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" onclick="show_content('/list/sm_employee_reg');" >직원</a>
+                                <a href="javascript:void(0);" onclick="set_content('/list/sm_employee_reg');" >직원</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" onclick="show_content('/list/sm_House_reg');" >창고</a>
+                                <a href="javascript:void(0);" onclick="set_content('/list/sm_House_reg');" >창고</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" onclick="show_content('/list/sm_Item_reg');" >물품</a>
+                                <a href="javascript:void(0);" onclick="set_content('/list/sm_Item_reg');" >물품</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" onclick="show_content('/list/sm_ItemGroup_reg');" >물품그룹</a>
+                                <a href="javascript:void(0);" onclick="set_content('/list/sm_ItemGroup_reg');" >물품그룹</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
