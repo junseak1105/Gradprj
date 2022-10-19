@@ -25,19 +25,11 @@ public class NavController {
     private TableInfo_Service tableInfo_service;
 
     @Autowired
-    private PageCategory_Service pageCategory_service;
-
-    @Autowired
-    private PageList_Service pageList_service;
-
-    @Autowired
     private CodeList_Service codeList_service;
 
     @GetMapping("/main")
     public ModelAndView main() {
         ModelAndView mv = new ModelAndView();
-        mv.addObject("pagecategory", pageCategory_service.findAll());
-        mv.addObject("pagelist", pageList_service.findAll());
         mv.setViewName("main");
         return mv;
     }
@@ -57,16 +49,20 @@ public class NavController {
     @GetMapping("/list/{pagename}")
     public ModelAndView list(@PathVariable String pagename, TableCriteria cri) {
         ModelAndView mv = new ModelAndView();
-        String tablename = (pageList_service.findByPageName(pagename)).getUse_table();
-
-        mv.addObject("tablename", tablename);
-        mv.addObject("pagename", pagename);
-        mv.addObject("code", codeList_service.findByCodeTable(tablename));
-        mv.addObject("key_column", tableInfo_service.getKeyColumn(tablename));
-        mv.addObject("tabledata", tableData_service.getAllData(tablename));
-        mv.addObject("tableinfo", tableInfo_service.getTableInfo(tablename));
+//        String tablename = (pageList_service.findByPageName(pagename)).getUse_table();
+//        mv.addObject("tablename", tablename);
+//        mv.addObject("pagename", pagename);
+//        mv.addObject("code", codeList_service.findByCodeTable(tablename));
+//        mv.addObject("key_column", tableInfo_service.getKeyColumn(tablename));
+//        mv.addObject("tabledata", tableData_service.getAllData(tablename));
+//        mv.addObject("tableinfo", tableInfo_service.getTableInfo(tablename));
         mv.setViewName("list");
         return mv;
+    }
+
+    @GetMapping("/listtemp/{pagename}")
+    public String listtemp(@PathVariable String pagename) {
+        return "listtemp";
     }
 
 

@@ -3,6 +3,11 @@ package com.gradprj.erp.config;
 public class ResponseMessages {
 
     /**
+     * 경로오류
+     */
+
+    public static final String BAD_REQUEST = "잘못된 요청입니다.";
+    /**
      * 데이터베이스 기본 응답 메세지
      */
     public static final String DB_ERROR = "데이터베이스 에러";

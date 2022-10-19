@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/data")
+@RequestMapping("/api")
 @Log4j2
 public class TableDataController {
 
@@ -19,32 +19,33 @@ public class TableDataController {
     private TableData_Service tableData_service;
 
     @ApiOperation(value = "테이블 데이터 조회", notes = "테이블 데이터 조회")
-    @GetMapping("/get/{table_name}")
+    @GetMapping("/tabledata/{table_name}")
     @ResponseBody
-    public ResponseEntity getTableData(@PathVariable String table_name){
-        return new ResponseEntity(tableData_service.getAllData(table_name), HttpStatus.OK);
+    public DefaultRes getTableData(@PathVariable String table_name){
+        return tableData_service.getAllData(table_name);
     }
 
-    @ApiOperation(value = "테이블 데이터 조회", notes = "테이블 데이터 조회")
-    @PostMapping("/get/{table_name}")
-    @ResponseBody
-    public ResponseEntity getTableData(@PathVariable String table_name, @PathVariable String key, @PathVariable String value, @PathVariable String order){
-        return new ResponseEntity(tableData_service.getData(table_name, key, value, order), HttpStatus.OK);
-    }
+    //조건 검색 미작성
+//    @ApiOperation(value = "테이블 데이터 조회", notes = "테이블 데이터 조회")
+//    @PostMapping("/get/{table_name}")
+//    @ResponseBody
+//    public ResponseEntity getTableData(@PathVariable String table_name, @PathVariable String key, @PathVariable String value, @PathVariable String order){
+//        return new ResponseEntity(tableData_service.getData(table_name, key, value, order), HttpStatus.OK);
+//    }
 
-    @PostMapping("/save/{table_name}")
+    @PostMapping("/tabledata/{table_name}")
     @ResponseBody
     public DefaultRes saveTableData(@PathVariable String table_name, @RequestBody JSONObject data){
         return tableData_service.saveData(table_name, (String) data.get("column"), (String) data.get("value"));
     }
 
-    @PutMapping("/update/{table_name}")
+    @PutMapping("/tabledata/{table_name}")
     @ResponseBody
     public ResponseEntity updateTableData(@PathVariable String table_name, @RequestBody JSONObject data){
         return new ResponseEntity(tableData_service.updateData(table_name, (String) data.get("column"), (String) data.get("value"),(String)data.get("key_column"),(String)data.get("key_value")), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{table_name}")
+    @DeleteMapping("/tabledata/{table_name}")
     @ResponseBody
     public ResponseEntity deleteTableData(@PathVariable String table_name, @RequestBody JSONObject data){
         return new ResponseEntity(tableData_service.deleteData(table_name, (String) data.get("key_column"), (String) data.get("selected")), HttpStatus.OK);
