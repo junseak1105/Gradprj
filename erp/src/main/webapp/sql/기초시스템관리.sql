@@ -38,7 +38,7 @@ create table erp.SM_Company_Reg
         UNIQUE (Representatives_Name),
     CONSTRAINT SM_CRI_COM_REG_fk1
         FOREIGN KEY (Main_Store_Postal_Code)
-            REFERENCES erp.sm_zipcode (ZipCode)
+            REFERENCES erp.SM_CRI_Zip (ZipCode)
 ) comment '회사 등록';
 
 drop table if exists SM_Workplace_Reg;
@@ -58,7 +58,7 @@ create table SM_Workplace_Reg
     Main_Store_Status           boolean     null comment '본점 여부',
     CONSTRAINT SM_CRI_Wor_Reg_fk1
         FOREIGN KEY (Workplace_Zipcode)
-            REFERENCES erp.sm_zipcode (ZipCode)
+            REFERENCES erp.SM_CRI_Zip (ZipCode)
 ) comment '사업장 등록';
 
 drop table if exists SM_Sector_Reg;
@@ -81,10 +81,10 @@ create table SM_Department_Reg
     UseDate         date        not null comment '사용기간 시작',
     CONSTRAINT SM_CRI_Dep_Reg_fk1
         FOREIGN KEY (Workplace_Code)
-            REFERENCES erp.sm_workplace_reg (Workplace_Code),
+            REFERENCES erp.SM_CRI_Wor_Reg (Workplace_Code),
     CONSTRAINT SM_CRI_Dep_Reg_fk2
         FOREIGN KEY (Sector_Code)
-            REFERENCES erp.sm_sector_reg (Section_Code)
+            REFERENCES erp.SM_CRI_Sec_Reg (Section_Code)
 ) comment '부서 등록';
 
 drop table if exists SM_Employee_Reg;
@@ -99,7 +99,7 @@ create table SM_Employee_Reg
     Emergency_Contact_Network int(13)     null comment '비상연락망',
     CONSTRAINT SM_CRI_Emp_Reg_fk1
         FOREIGN KEY (Department_Code)
-            REFERENCES erp.sm_department_reg (Department_Code)
+            REFERENCES erp.SM_CRI_Dep_Reg (Department_Code)
 ) comment '사원 등록';
 
 
@@ -132,7 +132,7 @@ create table SM_GeneralCustomer_Reg
     Wholesale_Retail_Business_Code varchar(12),
     CONSTRAINT SM_BIM_Gen_Cus_Reg_fk1
         FOREIGN KEY (ZipCode)
-            REFERENCES erp.sm_zipcode (ZipCode)
+            REFERENCES erp.SM_CRI_Zip (ZipCode)
 ) comment '일반거래처 등록';
 
 drop table if exists SM_Item_Reg;
@@ -158,7 +158,7 @@ create table SM_Item_Reg
     Notes             varchar(1000) comment '비고',
     CONSTRAINT SM_BIM_Ite_Reg_fk1
         FOREIGN KEY (Item_Group_Code)
-            REFERENCES erp.SM_ItemGroup_Reg (Item_Group_Code)
+            REFERENCES erp.SM_BIM_Ite_gro_Reg (Item_Group_Code)
 ) comment '품목등록';
 
 

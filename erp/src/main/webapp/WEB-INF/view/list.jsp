@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Tables</h1>
+        <h1 class="page-header">${pagename}</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -96,6 +96,7 @@
                             <input type="text" name="tablename" id="tablename" value="${tablename}" hidden>
                             <input type="text" name="status" id="status" value="add" hidden>
                             <input type="text" id="key_column" value="${key_column}" hidden>
+                            <input type="text" id="key_value" value="" hidden>
 
                             <%--
                                 [데이터 수정용 Form]
@@ -136,30 +137,45 @@
                                     --%>
                                     <c:if test="${info.ref_Table==null}">
                                         <c:choose>
-                                            <c:when test="${info.data_Type=='date'}">
-                                                <input type="date" id="${info.column_Name}"
-                                                       name="${info.column_Name}" class="form-control"
-                                                    ${required}/>
-                                            </c:when>
-                                            <c:when test="${info.data_Type=='int'}">
-                                                <input type="number" id="${info.column_Name}"
-                                                       name="${info.column_Name}" class="form-control"
-                                                    ${required} min="0"/>
-                                            </c:when>
-                                            <c:when test="${info.data_Type=='varchar'}">
+                                            <c:when test="${code.code_column eq info.column_Name}">
                                                 <input type="text" id="${info.column_Name}"
                                                        name="${info.column_Name}" class="form-control"
-                                                    ${required} maxlength="${info.data_Length}"/>
+                                                       placeholder="${info.column_Comment}"
+                                                       value="${code.code}"
+                                                       readonly/>
                                             </c:when>
-                                            <c:when test="${info.data_Type=='tinyint'}">
-                                                <select id="${info.column_Name}" name="${info.column_Name}"
-                                                        class="form-control" ${required}>
-                                                    <option value="0">미사용</option>
-                                                    <option value="1">사용</option>
-                                                </select>
-                                            </c:when>
+                                            <c:otherwise>
+                                                <c:choose>
+                                                    <c:when test="${info.data_Type=='date'}">
+                                                        <input type="date" id="${info.column_Name}"
+                                                               name="${info.column_Name}" class="form-control"
+                                                            ${required}/>
+                                                    </c:when>
+                                                    <c:when test="${info.data_Type=='int'}">
+                                                        <input type="number" id="${info.column_Name}"
+                                                               name="${info.column_Name}" class="form-control"
+                                                            ${required} min="0"/>
+                                                    </c:when>
+                                                    <c:when test="${info.data_Type=='varchar'}">
+                                                        <input type="text" id="${info.column_Name}"
+                                                               name="${info.column_Name}" class="form-control"
+                                                            ${required} maxlength="${info.data_Length}"/>
+                                                    </c:when>
+                                                    <c:when test="${info.data_Type=='tinyint'}">
+                                                        <select id="${info.column_Name}" name="${info.column_Name}"
+                                                                class="form-control" ${required}>
+                                                            <option value="0">미사용</option>
+                                                            <option value="1">사용</option>
+                                                        </select>
+                                                    </c:when>
+                                                </c:choose>
+
+                                            </c:otherwise>
+
                                         </c:choose>
                                     </c:if>
+
+
                                 </c:forEach>
                             </form>
 
@@ -289,10 +305,15 @@
                 var name = $(this).attr("name");
                 var value = $(this).text();
                 //tinyint용 변환
-                if(value=='true'){
+                if (value == 'true') {
                     value = 1;
-                }else if(value=='false'){
+                } else if (value == 'false') {
                     value = 0;
+                }
+                //keyvalue 저장용
+                var key_column = $('#key_column').val();
+                if (name == key_column) {
+                    $('#key_value').val(value);
                 }
                 $("#" + name).val(value);
             });
@@ -312,6 +333,9 @@
             $('#status').val('add');
             $('#DataModalLabel').text('추가');
             $('#dataForm').find('input').val('');
+            if("${code.code}"!=""){
+                $('#${code.code_column}').val("${code.code}");
+            }
             $("#DataModal").modal("show");
         });
 
@@ -335,9 +359,9 @@
      * @param value
      * @returns {boolean}
      */
-    function value_validation(value){
+    function value_validation(value) {
         var special_pattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
-        if(special_pattern.test(value) == true){
+        if (special_pattern.test(value) == true) {
             alert("특수문자는 입력할 수 없습니다.");
             return false;
         }
@@ -406,7 +430,7 @@
             dataType: 'json',
             contentType: 'application/json',
             success: function (data) {
-                if(data.statusCode == 200){
+                if (data.statusCode == 200) {
                     $("#DataModal").modal("hide");
                     // location.reload();
                     // show_content();
@@ -431,7 +455,7 @@
      */
     function saveData() {
         // 1. 데이터 미입력 상태 확인
-        if (!chk_requried()) return;
+        // if (!chk_requried()) return;
 
         // 2. 데이터 저장 상태 확인(추가: POST, 수정: PUT)
         var status = $('#status').val();
@@ -447,20 +471,28 @@
         var column = "";
         var value = "";
         var key_column = $('#key_column').val();
-        var key_value = $('#' + key_column).val();
+        var key_value = $('#key_value').val();
 
         validation = true;
         $('#dataForm').find('input,select').each(function () {
-            if(!value_validation($(this).val())){
+            if (!value_validation($(this).val())) {
                 validation = false;
                 return;
             }
             if ($(this).val() != '') {
                 column += $(this).attr('id') + ",";
-                value += "'" + $(this).val() + "',";
+                code = "${code.code}";
+                code_column = "${code.code_column}";
+                info_column = $(this).attr('id');
+                if (code != "" && code_column == info_column) {
+                    value += "NewCode('" + code + "'),";
+                } else {
+                    value += "'" + $(this).val() + "',";
+                }
+
             }
         });
-        if(!validation) return;
+        if (!validation) return;
 
         column = column.substring(0, column.length - 1);
         value = value.substring(0, value.length - 1);
@@ -480,7 +512,7 @@
             dataType: 'json',
             contentType: 'application/json',
             success: function (data) {
-                if(data.statusCode == 200){
+                if (data.statusCode == 200) {
                     $("#DataModal").modal("hide");
                     // location.reload();
                     // show_content();

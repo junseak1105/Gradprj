@@ -1,4 +1,19 @@
 var content_url="";
+function set_content(value){
+    content_url=value;
+    show_content();
+}
+
+function show_content(){
+    $.ajax({
+        url: content_url,
+        type: "GET",
+        success: function (data) {
+            $("#page-wrapper").html(data);
+        }
+    });
+}
+
 
 form_to_json($("#fr_pagelist").serializeArray())
 function form_to_json(form) {
@@ -15,19 +30,4 @@ function form_to_json(form) {
     });
     console.log(json);
     return JSON.stringify(json);
-}
-
-function set_content(value){
-    content_url=value;
-    show_content();
-}
-
-function show_content(){
-    $.ajax({
-        url: content_url,
-        type: "GET",
-        success: function (data) {
-            $("#page-wrapper").html(data);
-        }
-    });
 }
