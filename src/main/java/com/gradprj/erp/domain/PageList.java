@@ -1,0 +1,11 @@
+package com.gradprj.erp.domain;
+
+import lombok.Data;
+
+@Data
+public class PageList {
+    private String page_name;
+    private String use_table;
+    private String category_name;
+    private boolean previlege;
+}

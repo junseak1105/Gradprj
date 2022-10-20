@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Gradprj.iml" filepath="$PROJECT_DIR$/.idea/Gradprj.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../Megazone_lecture/Html_JS_JQuery/Html_JS_JQuery.iml" filepath="$PROJECT_DIR$/../Megazone_lecture/Html_JS_JQuery/Html_JS_JQuery.iml" />
-    </modules>
-  </component>
-</project>
