@@ -21,4 +21,7 @@ public interface TableInfo_Mapper {
     @Select("call getTableName(#{page_name})")
     String getTableName(String page_name);
 
+    @Select("select * from ${tablename}")
+    List<Map<String,String>> getFKData(String tablename);
+
 }

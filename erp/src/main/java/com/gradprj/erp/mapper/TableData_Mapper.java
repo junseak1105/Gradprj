@@ -36,7 +36,7 @@ public interface TableData_Mapper {
 //    @Update("UPDATE ${tablename} SET ${column}=${value} WHERE ${key_column} = ${key_value}")
 //    boolean update(String tablename, String column, String value, String key_column, String key_value);
 
-    @Update("UPDATE ${tablename} SET ${set} WHERE ${key_column} = '${key_value}'")
+    @Update("UPDATE ${tablename} SET ${set} WHERE ${key_column} = ${key_value}")
     boolean update(String tablename, String set,String key_column, String key_value);
 
 }

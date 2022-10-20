@@ -1,5 +1,6 @@
 //현재 컨텐츠 경로
-var content_url="/dashboard";
+content_url="/dashboard";
+
 
 $(document).ready(function () {
     show_content();

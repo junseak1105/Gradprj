@@ -264,11 +264,11 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="javascript:void(0);" onclick="set_content('/dashboard')"><i
-                                    class="fa fa-dashboard fa-fw"></i>Dashboard</a>
+                            <a href="javascript:void(0);" onclick="set_content('/dashboard')">
+                                <i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="/api/usage"><i class="fa-solid fa-magnifying-glass"></i> API</a>
+                            <a href="/api/usage"><i class="fa fa-book" aria-hidden="true"></i> API</a>
                         </li>
 
                     </ul>

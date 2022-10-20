@@ -29,7 +29,8 @@ dependencies {
 	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 //	mybatis
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
-
+//	aop
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
 }
 
 test {
