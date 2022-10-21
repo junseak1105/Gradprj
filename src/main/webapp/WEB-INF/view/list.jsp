@@ -13,15 +13,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <%--				<button id='regBtn' type="button" class="btn btn-xs pull-right">Register--%>
-                <%--					New Board</button>--%>
-            </div>
-            <button id="deleteBtn" type="button" class="btn btn-xs pull-right">Delete
-                Selected
-            </button>
-            <button id="addBtn" type="button" class="btn btn-xs pull-right">Add data
-            </button>
+            <div class="panel-heading"></div>
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <table id="dg" class="table table-striped table-bordered table-hover">
@@ -29,7 +21,6 @@
                     <tfoot id="table-footer"></tfoot>
                 </table>
             </div>
-
             <%--
                 [데이터 수정용 Modal]
                 id : DataModal

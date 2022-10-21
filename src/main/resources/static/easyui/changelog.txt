@@ -62,7 +62,7 @@ Version 1.7.0
  * datagrid: The horizontal scrollbar has a wrong state when the 'showHeader' is set to true. fixed.
  * combo: The initialized value will trigger the form's 'onChange' event when the 'multiple' is set to true. fixed.
  * panel: The horizontal panel doesn't work normally when 'noheader' property is set to true. fixed.
- * pagination: The extended buttons may lose in IE when rebuild the component. fixed.
+ * pagination: The extended buttonList may lose in IE when rebuild the component. fixed.
 * Improvement
  * tree: Add 'findBy' method to find a node by any fields.
  * tree: The 'find' method is enhanced to find a node easily.
@@ -218,7 +218,7 @@ Version 1.4.4
 * Bug
  * filebox: The 'clear' and 'reset' methods do not work properly in IE9. fixed.
  * messager: After calling $.messager.progress() with no arguments, the $.messager.progress('close') does not work properly. fixed.
- * timespinner: The value does not display properly in IE8 while clicking the spin buttons. fixed.
+ * timespinner: The value does not display properly in IE8 while clicking the spin buttonList. fixed.
  * window: The window does not display when calling 'options' method in 'onMove' event. fixed.
  * treegrid: The 'getLevel' method does not accept the parameter value of 0. fixed.
 * Improvement
@@ -384,7 +384,7 @@ Version 1.3.4
  * validatebox: Add 'enableValidation' and 'disableValidation' methods.
  * form: Add 'enableValidation' and 'disableValidation' methods.
  * slider: Add 'onComplete' event.
- * pagination: The 'buttons' property accepts the existing element.
+ * pagination: The 'buttonList' property accepts the existing element.
 
 Version 1.3.3
 -------------
@@ -597,7 +597,7 @@ Version 1.2.1
  * tree: Drag and Drop feature is supported now.
  * tree: Add onContextMenu callback function.
  * tabs: Add onContextMenu callback function.
- * tabs: Add 'tools' property that can create buttons on right bar.
+ * tabs: Add 'tools' property that can create buttonList on right bar.
  * datagrid: Add onHeaderContextMenu and onRowContextMenu callback functions.
  * datagrid: Custom view is supported.
  * treegrid: Add onContextMenu callback function and append,remove methods.
@@ -615,7 +615,7 @@ Version 1.2
  * combo: The basic component that allow user to extend their combo component such as combobox,combotree,etc.
  * combogrid: Combines combobox with drop-down datagrid component.
  * spinner: The basic plugin to create numberspinner,timespinner,etc.
- * numberspinner: The numberbox that allow user to change value by clicking up and down spin buttons.
+ * numberspinner: The numberbox that allow user to change value by clicking up and down spin buttonList.
  * timespinner: The time selector that allow user to quickly inc/dec a time.
  
 Version 1.1.2
@@ -703,4 +703,4 @@ Version 1.0.3
  * combobox: Combines a textbox with a list of options that users are able to choose from.
  * combotree: Combines combobox with drop-down tree component.
  * numberbox: Make input element can only enter number char.
- * dialog: rewrite the dialog plugin, dialog can contains toolbar and buttons.
+ * dialog: rewrite the dialog plugin, dialog can contains toolbar and buttonList.
