@@ -19,10 +19,10 @@ public class TableInfoController {
     @Autowired
     private TableInfo_Service tableInfoService;
 
-    @GetMapping("/tableinfo/{page_name}")
+    @GetMapping("/tableinfo/{pagecode}")
     @ApiOperation(value = "테이블 정보 조회", notes = "페이지 명을 입력하면 페이지 생성을 위한 정보가 반환됨")
-    public DefaultRes getTableInfo(@PathVariable String page_name){
-        return tableInfoService.getTableInfo(page_name);
+    public DefaultRes getTableInfo(@PathVariable String pagecode){
+        return tableInfoService.getTableInfo(pagecode);
     }
 
 }

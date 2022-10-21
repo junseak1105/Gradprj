@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import springfox.documentation.annotations.ApiIgnore;
+import sun.tools.jconsole.JConsole;
 
 @Controller
 @ApiIgnore
@@ -41,12 +42,11 @@ public class NavController {
         return "redirect:/swagger-ui/index.html";
     }
 
-    @GetMapping("/list/{pagename}")
-    public ModelAndView list(@PathVariable String pagename, TableCriteria cri) {
+    @GetMapping("/list/{page_code}")
+    public ModelAndView list(@PathVariable String page_code) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("list");
         return mv;
     }
-
 
 }

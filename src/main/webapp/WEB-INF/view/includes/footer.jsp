@@ -19,7 +19,7 @@
 <script src="/bootstrap/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
 <!-- DataTables Buttons -->
-<script src="https://cdn.datatables.net/buttonList/1.5.1/js/dataTables.buttonList.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 
@@ -27,20 +27,16 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 
-<script src="https://cdn.datatables.net/buttonList/1.5.1/js/buttonList.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
 
-<script src="https://cdn.datatables.net/buttonList/1.5.1/js/buttonList.print.min.js"></script>
-
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/bootstrap/dist/js/sb-admin-2.js"></script>
 
-<script src="/js/ButtonList.js"></script>
-
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
     $(document).ready(function() {
-
         $(".sidebar-nav")
             .attr("class","sidebar-nav navbar-collapse collapse")
             .attr("aria-expanded",'false')

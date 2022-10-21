@@ -11,6 +11,7 @@ begin
     -- Item_Code = 'It' + 10자리 숫자
     -- Item_Group_Code = 'Ig' + 10자리 숫자
     -- House_Code = 'Ho' + 10자리 숫자
+    -- Page_Code = 'Pg' + 10자리 숫자
     if V = 'Co' then
         select substr(max(company_code),3,10) into vCodeNumber from sm_cri_com_reg;
     elseif V = 'Em' then
@@ -23,6 +24,8 @@ begin
         select substr(max(item_group_code),3,10) into vCodeNumber from sm_bim_ite_gro_reg;
     elseif V = 'Ho' then
         select substr(max(house_code),3,10) into vCodeNumber from sm_bim_hou_reg;
+    elseif V = 'Pg' then
+        select substr(max(page_code),3,10) into vCodeNumber from sm_cri_page_list;
     end if;
     if vCodeNumber is null then
         set vCodeNumber = 0;

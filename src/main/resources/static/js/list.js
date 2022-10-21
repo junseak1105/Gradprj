@@ -1,14 +1,15 @@
 var pageurl;
 var pagename;
+var pagecode;
 var tablename;
 var tableinfo;
 var tabledata;
 var columns = new Array();
-var buttonlist = new Array();
+var buttonsarray = new Array();
 
 $().ready(function () {
     pageurl = content_url;
-    pagename = pageurl.substring(pageurl.lastIndexOf('/') + 1);
+    pagecode = pageurl.substring(pageurl.lastIndexOf('/') + 1);
     set_page();
 });
 
@@ -23,16 +24,17 @@ function set_page() {
 }
 
 function get_tableinfo() {
-    url = "/api/tableinfo/" + pagename;
+    url = "/api/tableinfo/" + pagecode;
     $.ajax({
         type: "GET",
-        url: encodeURI(url),
+        url: url,
         dataType: 'json',
         async: false,
         success: function (data) {
             console.log("tableinfo | StatusCode:" + data.statusCode + "ResponseMessage:" + data.responseMessage);
             tableinfo = data.data;
             tablename = tableinfo.tablename;
+            pagename = tableinfo.pagename;
         }
     });
 };
@@ -317,7 +319,7 @@ function set_DataModal() {
 function set_DataTable() {
     $("#tablename").val(tablename);
     $("#key_column").val(tableinfo.key_column);
-    $(".page-header").text(pagename);
+    $(".page-header").text(tableinfo.pagename);
     $(".panel-heading").text(tablename);
     /**
      *    [테이블 thead&tfoot 제작]
@@ -345,10 +347,6 @@ function set_DataTable() {
     $('#dg').DataTable({
         ajax: '/api/tabledata/' + tablename,
         columns: columns,
-        paging: true,
-        toolbar: "#toolbar",
-        scroller: true,
-        info: true,
         autoWidth: false,
         responsive: true,
         lengthChange: true,
@@ -360,7 +358,8 @@ function set_DataTable() {
             'rt'+
             '<"pagenation"p>'+
             '<"bottom"<"left-col"i><"right-col"l>>',
-        buttons: buttonlist
+        buttons: buttonsarray
+
     });
     /**
      * [DataTable 초기 생성 끝]
@@ -457,7 +456,7 @@ function set_DataTable_Toolbar() {
  * [DataTable 버튼 생성]
  */
 function set_DataTable_Buttons() {
-    buttonlist = [
+    buttonsarray = [
         {
             extend: 'copy',
             text: 'Copy',
@@ -523,6 +522,5 @@ function set_DataTable_Buttons() {
         },
 
     ];
-
 }
 

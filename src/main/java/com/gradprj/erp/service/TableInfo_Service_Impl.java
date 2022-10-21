@@ -26,9 +26,10 @@ public class TableInfo_Service_Impl implements TableInfo_Service {
 
     @Override
     @Transactional
-    public DefaultRes getTableInfo(String page_name) {
+    public DefaultRes getTableInfo(String pagecode) {
         Map<String, Object> resultMap = new HashMap<>();
-        String table_name = tableInfo_mapper.getTableName(page_name);
+        String pagename = tableInfo_mapper.getPageName(pagecode);
+        String table_name = tableInfo_mapper.getTableName(pagename);
         List<TableInfo> tableInfoList = tableInfo_mapper.gettableinfo(table_name);
         resultMap.put("data", tableInfoList);
         /*
@@ -43,6 +44,7 @@ public class TableInfo_Service_Impl implements TableInfo_Service {
             }
         }
         resultMap.put("tablename", table_name);
+        resultMap.put("pagename", pagename);
         resultMap.put("key_column", tableInfo_mapper.getKeyColumn(table_name));
         resultMap.put("code", codeList_service.findByCodeTable(table_name));
         if(resultMap.isEmpty()){

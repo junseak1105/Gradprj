@@ -8,4 +8,5 @@ public class PageList {
     private String use_table;
     private String category_name;
     private boolean previlege;
+    private String page_code;
 }

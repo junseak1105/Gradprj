@@ -10,11 +10,10 @@ function set_content(value){
 }
 function show_content(){
     $.ajax({
-        url: content_url,
+        url: (content_url),
         type: "GET",
         success: function (data) {
             $("#page-wrapper").html(data);
         }
     });
 }
-
