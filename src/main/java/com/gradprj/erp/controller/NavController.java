@@ -37,6 +37,13 @@ public class NavController {
         return mv;
     }
 
+    @GetMapping("/tablegenerator")
+    public ModelAndView tablegenerator() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("tablegenerator");
+        return mv;
+    }
+
     @GetMapping("/api/usage")
     public String api() {
         return "redirect:/swagger-ui/index.html";

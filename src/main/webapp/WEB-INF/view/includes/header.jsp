@@ -268,6 +268,10 @@
                                 <i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
                         <li>
+                            <a href="javascript:void(0);" onclick="set_content('/tablegenerator')">
+                                <i class="fa fa-dashboard fa-fw"></i>tablegenerator</a>
+                        </li>
+                        <li>
                             <a href="/api/usage"><i class="fa fa-book" aria-hidden="true"></i> API</a>
                         </li>
 

@@ -456,71 +456,14 @@ function set_DataTable_Toolbar() {
  * [DataTable 버튼 생성]
  */
 function set_DataTable_Buttons() {
-    buttonsarray = [
-        {
-            extend: 'copy',
-            text: 'Copy',
-            className: 'btn btn-default',
-        },
-        {
-            extend: 'excel', //파일명
-            title: 'excel',
-            className: 'btn btn-success',
-        },
-        {
-            extend: 'print',
-            className: 'btn btn-info',
-            title: '품번출력',
-            customize: function (win) {
-                $(win.document.body)
-                    .css('font-size', '10pt')
-                    .prepend(
-                        '<img src="http://datatables.net/media/images/logo-fade.png" style="position:absolute; top:0; left:0;" />'
-                    );
-                $(win.document.body).find('table')
-                    .addClass('compact')
-                    .css('font-size', 'inherit');
-                $(win.document.body).find('h1').remove();
-                $header = $('<table border="1px solid black" style="width: 100%">' +
-                    '<tr>' +
-                    '<td>이름</td>' +
-                    '<td>이메일</td>' +
-                    '<td>전화번호</td>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '<td>홍길동</td>' +
-                    '<td>email</td>' +
-                    '<td>010-1234-5678</td>' +
-                    '</tr>' +
-                    '</table>')
-                $footer = $('<table border="1px solid black" style="width: 100%" >' +
-                    '<tr>' +
-                    '<td>이름</td>' +
-                    '<td>이메일</td>' +
-                    '<td>전화번호</td>' +
-                    '</tr>' +
-                    '</table>');
-                $(win.document.body).find('table').prev().append($header);
-                $(win.document.body).append($footer);
-            }
-        },
-        {
-            text: '삭제',
-            className: 'btn btn-danger',
-            float: 'right',
-            action: function (e, dt, node, config) {
-                deleteData();
-            }
-        },
-        {
-            text: '추가',
-            float: 'right',
-            className: 'btn btn-primary',
-            action: function (e, dt, node, config) {
-                addBtn();
-            }
-        },
+    buttonsarray = new Array();
+    buttonsarray.push(copy_Btn);
+    buttonsarray.push(excel_Btn);
+    buttonsarray.push(delete_Btn);
+    buttonsarray.push(add_Btn);
 
-    ];
+    title = '출력';
+    header = '<tr><th colspan="100%"><table style="width: 100%;border-collapse: collapse"><tr><td>이름</td><td>ㅔㅌ스트</td></tr><tr><td>홍길동</td><td>테스트</td></tr></table></th></tr>';
+    footer = '<tr><td colspan="100%"><table style="width: 100%;border-collapse: collapse"><tr><td>이름</td></tr><tr><td>gd</td></tr></table></td></tr>';
+    buttonsarray.push(get_print_Btn(title,header,footer));
 }
-
