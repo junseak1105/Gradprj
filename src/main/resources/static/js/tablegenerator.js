@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#addHeadBtn').click(function () {
         $('#createstatus').val('thead');
         $('#TableCreateModal').modal('show');
@@ -24,13 +25,15 @@ $(document).ready(function () {
         for (let i = 0; i < row; i++) {
             let tr = $('<tr></tr>');
             for (let j = 0; j < col; j++) {
-                let td = $('<td class="colresize"><input type="text" value=" "/></td>');
+                let td = $('<td class="colresize"></td>');
                 tr.append(td);
             }
             $('#' + status).append(tr);
         }
         $('#TableCreateModal').modal('hide');
+        updateResult();
     });
+
 
     $(document).on('mouseover', '.colresize', function (e) {
         if (e.pageX - $(this).offset().left > $(this).width() - 5 ) {
@@ -85,9 +88,7 @@ $(document).ready(function () {
         $('.colresize').removeClass('resizingy_selected');
         $('.colresize').css('cursor', 'default');
         $(document).unbind('mousemove');
-
-        $('#result_thead').val($('#thead').html());
-        $('#result_tfoot').val($('#tfoot').html());
+        updateResult();
     });
 
     $(document).on('mousedown', '.colresize', function (e) {
@@ -100,7 +101,23 @@ $(document).ready(function () {
         }
     });
 
+    $(document).on('dblclick', '.colresize', function (e) {
+        let value = $(this).html();
+        let input = $('<input type="text" value="'+value+'">');
+        $(this).html(input);
+        input.focus();
+    });
+    $(document).on('change', '#table input', function () {
+        $(this).parent().html($(this).val());
+        updateResult();
+    })
+
 });
+
+function updateResult() {
+    $('#print_head').val($('#thead').html());
+    $('#print_foot').val($('#tfoot').html());
+}
 
 function deleteRow() {
     let selected = $('.selected');

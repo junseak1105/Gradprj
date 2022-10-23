@@ -25,11 +25,11 @@ CREATE PROCEDURE `getKeyColumn`(
     p_table_name varchar(30)
 )
 BEGIN
-    select col.column_name as KeyColumn
+    select KeyColumn from (select col.column_name as KeyColumn
     from information_schema.columns col
              left join information_schema.KEY_COLUMN_USAGE keyset
                        on col.COLUMN_NAME = keyset.COLUMN_NAME and col.TABLE_NAME = keyset.TABLE_NAME
-    where col.TABLE_NAME = p_table_name and COLUMN_KEY = 'PRI';
+    where col.TABLE_NAME = p_table_name and COLUMN_KEY = 'PRI' limit 1) as t;
 END;
 
 call getKeyColumn('SM_cri_com_reg');

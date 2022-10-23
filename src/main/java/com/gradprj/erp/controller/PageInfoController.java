@@ -1,7 +1,7 @@
 package com.gradprj.erp.controller;
 
 import com.gradprj.erp.config.DefaultRes;
-import com.gradprj.erp.service.TableInfo_Service;
+import com.gradprj.erp.service.PageInfo_Service;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 @Log4j2
-public class TableInfoController {
+public class PageInfoController {
 
     @Autowired
-    private TableInfo_Service tableInfoService;
+    private PageInfo_Service PageInfoService;
 
-    @GetMapping("/tableinfo/{pagecode}")
+    @GetMapping("/pageinfo/{pagecode}")
     @ApiOperation(value = "테이블 정보 조회", notes = "페이지 명을 입력하면 페이지 생성을 위한 정보가 반환됨")
     public DefaultRes getTableInfo(@PathVariable String pagecode){
-        return tableInfoService.getTableInfo(pagecode);
+        return PageInfoService.getPageInfo(pagecode);
     }
 
 }

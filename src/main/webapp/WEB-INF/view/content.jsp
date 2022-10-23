@@ -3,7 +3,7 @@
 <%@include file="includes/injection.jsp" %>
 
 <script src="/js/Buttoncustom.js"></script>
-<script src="/js/list.js"></script>
+<script src="/js/content.js"></script>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header" id="page-header"></h1>
@@ -17,6 +17,7 @@
             <div class="panel-heading"></div>
             <!-- /.panel-heading -->
             <div class="panel-body">
+                <div id = "addi_content"></div>
                 <table id="dg" class="table table-striped table-bordered table-hover">
                     <thead id="table-header"></thead>
                     <tfoot id="table-footer"></tfoot>

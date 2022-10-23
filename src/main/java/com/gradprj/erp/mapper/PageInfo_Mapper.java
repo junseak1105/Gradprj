@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Mapper
 @Component
-public interface TableInfo_Mapper {
+public interface PageInfo_Mapper {
 
     @Select("call get_table_info(#{table_name})")
     List<TableInfo> gettableinfo(String table_name);

@@ -15,14 +15,6 @@ import sun.tools.jconsole.JConsole;
 @Controller
 @ApiIgnore
 public class NavController {
-
-    @Autowired
-    private TableData_Service tableData_service;
-    @Autowired
-    private TableInfo_Service tableInfo_service;
-    @Autowired
-    private CodeList_Service codeList_service;
-
     @GetMapping("/main")
     public ModelAndView main() {
         ModelAndView mv = new ModelAndView();
@@ -37,10 +29,10 @@ public class NavController {
         return mv;
     }
 
-    @GetMapping("/tablegenerator")
-    public ModelAndView tablegenerator() {
+    @GetMapping("/addipage/{pagelink}")
+    public ModelAndView addipage(@PathVariable String pagelink) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("tablegenerator");
+        mv.setViewName("addipage/" + pagelink);
         return mv;
     }
 
@@ -49,10 +41,10 @@ public class NavController {
         return "redirect:/swagger-ui/index.html";
     }
 
-    @GetMapping("/list/{page_code}")
+    @GetMapping("/content/{page_code}")
     public ModelAndView list(@PathVariable String page_code) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("list");
+        mv.setViewName("content");
         return mv;
     }
 

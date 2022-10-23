@@ -14,17 +14,32 @@ $().ready(function () {
 });
 
 function set_page() {
-    get_tableinfo(); // 테이블 정보 조회
+    get_pageinfo(); // 페이지 정보 조회
+    // console.log(tableinfo);
     get_tabledata(); // 테이블 데이터 조회
+    console.log(tabledata);
     set_DataTable_Buttons(); //데이터 테이블 버튼 생성
     set_DataTable(); //데이터 테이블 생성
     set_DataTable_Toolbar(); //데이터 테이블 툴바 생성
     set_DataTableAction(); //데이터 테이블 액션 설정
     set_DataModal(); //데이터 입력용 모달 생성
+    set_AddiPage(); //추가 페이지 생성
 }
 
-function get_tableinfo() {
-    url = "/api/tableinfo/" + pagecode;
+function set_AddiPage() {
+    if (tableinfo.addi_page != null) {
+        $.ajax({
+            url: "/addipage/" + tableinfo.addi_page,
+            type: "GET",
+            success: function (data) {
+                $("#addi_content").html(data);
+            }
+        });
+    }
+}
+
+function get_pageinfo() {
+    url = "/api/pageinfo/" + pagecode;
     $.ajax({
         type: "GET",
         url: url,
@@ -185,16 +200,21 @@ function saveData() {
 
     validation = true;
     $('#dataForm').find('input,select').each(function () {
-        if (!value_validation($(this).val())) {
-            validation = false;
-            return;
+        if (pagecode != 'Pg0000000025') { //제외할 페이지 코드 추가
+            if (!value_validation($(this).val())) {
+                validation = false;
+                return;
+            }
         }
         if ($(this).val() != '') {
+            console.log($(this).val());
             column += $(this).attr('id') + ",";
             info_column = $(this).attr('id');
             if (tableinfo.code != null) {
                 if (tableinfo.code.code_column == info_column) {
                     value += "NewCode('" + tableinfo.code.code + "'),";
+                } else {
+                    value += "'" + $(this).val() + "',";
                 }
             } else {
                 value += "'" + $(this).val() + "',";
@@ -255,7 +275,7 @@ function set_DataModal() {
         //외래키인 경우 select option으로 생성
         if (tableinfo.data[i].ref_Table != null) {
             $select = $("<select></select>").attr("id", tableinfo.data[i].column_Name).attr("name", tableinfo.data[i].column_Name).attr("class", "form-control").attr("required", requried);
-            $select.append("<option value=''>선택</option>");
+            $select.append("<option value=' '>선택</option>");
             ref_table = tableinfo.data[i].ref_Table;
             //외래키 테이블의 데이터를 가져와서 select option에 추가, 현재는 pk만 찾아서 값으로 추가
             var pri_column;
@@ -272,8 +292,9 @@ function set_DataModal() {
             $form.append($select);
         } else {
             //일반 컬럼인 경우 input으로 생성
+
             if (tableinfo.code != null) {
-                if (tableinfo.code.code_column == tableinfo.data[i].column_Name) {
+                if (tableinfo.code.code_column.toUpperCase() == tableinfo.data[i].column_Name.toUpperCase()) {
                     $form.append("<input type='text' id='" + tableinfo.data[i].column_Name + "' name='" + tableinfo.data[i].column_Name + "' class='form-control'  value = " + tableinfo.code.code + " readonly>");
                 } else {
                     switch (tableinfo.data[i].data_Type) {
@@ -288,6 +309,9 @@ function set_DataModal() {
                             break;
                         case 'tinyint':
                             $form.append("<select id='" + tableinfo.data[i].column_Name + "' name='" + tableinfo.data[i].column_Name + "' class='form-control' " + requried + "><option value='1'>사용</option><option value='0'>미사용</option></select>");
+                            break;
+                        case 'text':
+                            $form.append("<input type='text' id='" + tableinfo.data[i].column_Name + "' name='" + tableinfo.data[i].column_Name + "' class='form-control' " + requried + " maxlength='" + tableinfo.data[i].data_Length + "'readonly>");
                             break;
                     }
                 }
@@ -304,6 +328,9 @@ function set_DataModal() {
                         break;
                     case 'tinyint':
                         $form.append("<select id='" + tableinfo.data[i].column_Name + "' name='" + tableinfo.data[i].column_Name + "' class='form-control' " + requried + "><option value='1'>사용</option><option value='0'>미사용</option></select>");
+                        break;
+                    case 'text':
+                        $form.append("<input type='text' id='" + tableinfo.data[i].column_Name + "' name='" + tableinfo.data[i].column_Name + "' class='form-control' " + requried + " maxlength='" + tableinfo.data[i].data_Length + "'readonly>");
                         break;
                 }
             }
@@ -355,8 +382,8 @@ function set_DataTable() {
             [5, 10, 25, 50, 'All'],
         ],
         dom: '<"top"<"left-col"B><"right-col"f>>' +
-            'rt'+
-            '<"pagenation"p>'+
+            'rt' +
+            '<"pagenation"p>' +
             '<"bottom"<"left-col"i><"right-col"l>>',
         buttons: buttonsarray
 
@@ -462,8 +489,11 @@ function set_DataTable_Buttons() {
     buttonsarray.push(delete_Btn);
     buttonsarray.push(add_Btn);
 
-    title = '출력';
-    header = '<tr><th colspan="100%"><table style="width: 100%;border-collapse: collapse"><tr><td>이름</td><td>ㅔㅌ스트</td></tr><tr><td>홍길동</td><td>테스트</td></tr></table></th></tr>';
-    footer = '<tr><td colspan="100%"><table style="width: 100%;border-collapse: collapse"><tr><td>이름</td></tr><tr><td>gd</td></tr></table></td></tr>';
-    buttonsarray.push(get_print_Btn(title,header,footer));
+    if (tableinfo.print_info != null) {
+        buttonsarray.push(get_print_Btn(tableinfo.print_info.print_name, tableinfo.print_info.print_head, tableinfo.print_info.print_foot));
+    }
+    // title = '출력';
+    // header = '<tr><th colspan="100%"><table style="width: 100%;border-collapse: collapse"><tr><td>이름</td><td>ㅔㅌ스트</td></tr><tr><td>홍길동</td><td>테스트</td></tr></table></th></tr>';
+    // footer = '<tr><td colspan="100%"><table style="width: 100%;border-collapse: collapse"><tr><td>이름</td></tr><tr><td>gd</td></tr></table></td></tr>';
+
 }

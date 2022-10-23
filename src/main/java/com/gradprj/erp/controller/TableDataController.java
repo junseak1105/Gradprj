@@ -37,6 +37,7 @@ public class TableDataController {
     @PostMapping("/tabledata/{table_name}")
     @ResponseBody
     public DefaultRes saveTableData(@PathVariable String table_name, @RequestBody JSONObject data){
+        System.out.println("testestests");
         return tableData_service.saveData(table_name, (String) data.get("column"), (String) data.get("value"));
     }
 

@@ -45,7 +45,7 @@ function set_navdata(){
             pagename = page_list[j].page_name;
             page_code = page_list[j].page_code;
             if(page_list[j].category_name==category){
-                $ul.append("<li><a href=\"javascript:void(0);\" onclick=\"set_content('/list/"+page_code+"')\">"+pagename+"</a> </li>");
+                $ul.append("<li><a href=\"javascript:void(0);\" onclick=\"set_content('/content/"+page_code+"')\">"+pagename+"</a> </li>");
             }
         }
         $li.append($ul);

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@include file="includes/injection.jsp" %>
-<script src="/js/table.js"></script>
+<%@include file="../includes/injection.jsp" %>
+<script src="/js/tablegenerator.js"></script>
 <style>
     table {
         width: 100%;
@@ -56,8 +56,8 @@
                     </tr>
                     </tfoot>
                 </table>
-                <input type="text" id="result_thead" style="width: 100%;height: 100px" hidden>
-                <input type="text" id="result_tfoot" style="width: 100%;height: 100px" hidden>
+<%--                <input type="text" id="result_thead" style="width: 100%;height: 100px" readonly hidden>--%>
+<%--                <input type="text" id="result_tfoot" style="width: 100%;height: 100px" readonly hidden>--%>
             </div>
 
             <!--  end panel-body -->
