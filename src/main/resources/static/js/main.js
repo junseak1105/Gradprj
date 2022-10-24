@@ -2,6 +2,7 @@
 content_url="/dashboard";
 
 $(document).ready(function () {
+    $(".injections").css("display", "none");
     show_content();
 });
 function set_content(value){

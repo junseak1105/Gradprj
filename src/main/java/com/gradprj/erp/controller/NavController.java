@@ -29,6 +29,7 @@ public class NavController {
         return mv;
     }
 
+
     @GetMapping("/addipage/{pagelink}")
     public ModelAndView addipage(@PathVariable String pagelink) {
         ModelAndView mv = new ModelAndView();

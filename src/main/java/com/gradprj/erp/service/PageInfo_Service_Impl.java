@@ -31,20 +31,6 @@ public class PageInfo_Service_Impl implements PageInfo_Service {
     private PrintList_Service printList_service;
 
 
-    @ApiOperation(value = "페이지 정보 조회", notes = "페이지 코드를 입력하면 페이지 생성을 위한 정보가 반환됨" +
-            "[반환내용]" +
-            "pagename: 페이지 이름" +
-            "tablename: 사용 테이블 명" +
-            "data: 테이블 정보" +
-            "key_column: 사용 테이블 식별자 컬럼" +
-            "code: 사용 테이블의 코드 정보(없을시 null)" +
-            "외래키 데이터 목록:" +
-            "  - info: 외래키 테이블 정보" +
-            "  - data: 외래키 테이블 내부 데이터" +
-            "print_info: 출력 서식 정보" +
-            "addi_page: 추가 기능 링크" +
-            ")"
-    )
     @Override
     @Transactional
     public DefaultRes getPageInfo(String pagecode) {

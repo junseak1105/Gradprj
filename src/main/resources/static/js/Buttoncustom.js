@@ -45,7 +45,7 @@ function get_print_Btn(title,header,footer){
             $tfoot = $("<tfoot></tfoot>").attr('id','print_footer');
             $(win.document.body).find('tbody').after($tfoot);
             $(win.document.body).find('thead').prepend(header);
-            $(win.document.body).find('thead').prepend('<tr><td colspan="100%" style="text-align: center;"><h3>'+title+'</h3></td></tr>');
+            // $(win.document.body).find('thead').prepend('<tr><td colspan="100%" style="text-align: center;"><h3>'+title+'</h3></td></tr>');
             $(win.document.body).find('#print_footer').append(footer);
 
             // console.log($(win.document.body).find('table').html());

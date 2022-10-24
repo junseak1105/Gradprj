@@ -20,7 +20,20 @@ public class PageInfoController {
     private PageInfo_Service PageInfoService;
 
     @GetMapping("/pageinfo/{pagecode}")
-    @ApiOperation(value = "테이블 정보 조회", notes = "페이지 명을 입력하면 페이지 생성을 위한 정보가 반환됨")
+    @ApiOperation(value = "페이지 정보 조회", notes = "페이지 코드를 입력하면 페이지 생성을 위한 정보가 반환됨\n" +
+            "[반환내용]\n" +
+            "pagename: 페이지 이름\n" +
+            "tablename: 사용 테이블 명\n" +
+            "data: 테이블 정보\n" +
+            "key_column: 사용 테이블 식별자 컬럼\n" +
+            "code: 사용 테이블의 코드 정보(없을시 null)\n" +
+            "외래키 데이터 목록:\n" +
+            "  - info: 외래키 테이블 정보\n" +
+            "  - data: 외래키 테이블 내부 데이터\n" +
+            "print_info: 출력 서식 정보\n" +
+            "addi_page: 추가 기능 링크\n" +
+            ""
+    )
     public DefaultRes getTableInfo(@PathVariable String pagecode){
         return PageInfoService.getPageInfo(pagecode);
     }

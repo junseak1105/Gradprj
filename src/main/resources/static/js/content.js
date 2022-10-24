@@ -17,7 +17,7 @@ function set_page() {
     get_pageinfo(); // 페이지 정보 조회
     // console.log(tableinfo);
     get_tabledata(); // 테이블 데이터 조회
-    console.log(tabledata);
+    // console.log(tabledata);
     set_DataTable_Buttons(); //데이터 테이블 버튼 생성
     set_DataTable(); //데이터 테이블 생성
     set_DataTable_Toolbar(); //데이터 테이블 툴바 생성
@@ -46,7 +46,7 @@ function get_pageinfo() {
         dataType: 'json',
         async: false,
         success: function (data) {
-            console.log("tableinfo | StatusCode:" + data.statusCode + "ResponseMessage:" + data.responseMessage);
+            // console.log("tableinfo | StatusCode:" + data.statusCode + "ResponseMessage:" + data.responseMessage);
             tableinfo = data.data;
             tablename = tableinfo.tablename;
             pagename = tableinfo.pagename;
@@ -62,7 +62,7 @@ function get_tabledata() {
         dataType: 'json',
         async: false,
         success: function (data) {
-            console.log("tabledata | StatusCode:" + data.statusCode + "ResponseMessage:" + data.responseMessage);
+            // console.log("tabledata | StatusCode:" + data.statusCode + "ResponseMessage:" + data.responseMessage);
             tabledata = data.data;
         }
     });
@@ -142,7 +142,7 @@ function deleteData() {
     }
     selected = selected.substring(0, selected.length - 1);
 
-    console.log(selected);
+    // console.log(selected);
     var key_column = $('#key_column').val();
     var data = {
         key_column: key_column,
@@ -207,7 +207,7 @@ function saveData() {
             }
         }
         if ($(this).val() != '') {
-            console.log($(this).val());
+            // console.log($(this).val());
             column += $(this).attr('id') + ",";
             info_column = $(this).attr('id');
             if (tableinfo.code != null) {
@@ -225,7 +225,7 @@ function saveData() {
 
     column = column.substring(0, column.length - 1);
     value = value.substring(0, value.length - 1);
-    console.log(tablename);
+    // console.log(tablename);
     var data = {
         tablename: tablename,
         key_column: key_column,
@@ -233,7 +233,7 @@ function saveData() {
         column: column,
         value: value
     };
-    console.log(data);
+    // console.log(data);
 // 4. 데이터 DB에 반영
     $.ajax({
         type: type,
@@ -489,8 +489,10 @@ function set_DataTable_Buttons() {
     buttonsarray.push(delete_Btn);
     buttonsarray.push(add_Btn);
 
+    thead ='<th colspan="100%"><table style="width: 100%;border-collapse: collapse">'+tableinfo.print_info.print_head+'</table></th>';
+    tfoot ='<th colspan="100%"><table style="width: 100%;border-collapse: collapse">'+tableinfo.print_info.print_foot+'</table></th>';
     if (tableinfo.print_info != null) {
-        buttonsarray.push(get_print_Btn(tableinfo.print_info.print_name, tableinfo.print_info.print_head, tableinfo.print_info.print_foot));
+        buttonsarray.push(get_print_Btn(tableinfo.print_info.print_name, thead, tfoot));
     }
     // title = '출력';
     // header = '<tr><th colspan="100%"><table style="width: 100%;border-collapse: collapse"><tr><td>이름</td><td>ㅔㅌ스트</td></tr><tr><td>홍길동</td><td>테스트</td></tr></table></th></tr>';
