@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Mapper
 @Component
-public interface TableInfo_Mapper {
+public interface PageInfo_Mapper {
 
     @Select("call get_table_info(#{table_name})")
     List<TableInfo> gettableinfo(String table_name);
@@ -20,6 +20,9 @@ public interface TableInfo_Mapper {
 
     @Select("call getTableName(#{page_name})")
     String getTableName(String page_name);
+
+    @Select("select page_name from sm_cri_page_list where page_code = #{page_code}")
+    String getPageName(String page_code);
 
     @Select("select * from ${tablename}")
     List<Map<String,String>> getFKData(String tablename);

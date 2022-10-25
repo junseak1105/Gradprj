@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@include file="../includes/header.jsp" %>
+    <%@include file="../../includes/header.jsp" %>
 <div class="container" style="margin-left: 0px; margin-right: 0px;width: 100%">
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -21,4 +21,4 @@
             </div>
         </div>
     </nav>
-    <%@include file="../includes/footer.jsp" %>
+    <%@include file="../../includes/footer.jsp" %>

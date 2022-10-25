@@ -6,6 +6,6 @@ import com.gradprj.erp.domain.PageList;
 public interface PageList_Service {
 
     DefaultRes findAll();
-    PageList findByPageName(String page_name);
+    PageList findByPageCode(String page_code);
 
 }

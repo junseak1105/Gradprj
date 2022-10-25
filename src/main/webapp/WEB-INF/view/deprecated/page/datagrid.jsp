@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-    <%@include file="../includes/header.jsp" %>
+    <%@include file="../../includes/header.jsp" %>
     <script>var pagename = "${pagename}"</script>
     <script src="/js/page/DataGrid.js"></script>
 <div id="container">
@@ -46,4 +46,4 @@
 
     </div>
 </div>
-    <%@include file="../includes/footer.jsp" %>
+    <%@include file="../../includes/footer.jsp" %>

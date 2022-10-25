@@ -11,10 +11,10 @@ import java.util.List;
 @Component
 public interface PageList_Mapper {
 
-    @Select("SELECT page_name, use_table, category_name FROM sm_cri_page_list")
+    @Select("SELECT * FROM sm_cri_page_list")
     List<PageList> findAll();
 
-    @Select("SELECT page_name, use_table, category_name FROM sm_cri_page_list WHERE page_name = #{page_name}")
-    PageList findByPageName(String page_name);
+    @Select("SELECT * FROM sm_cri_page_list WHERE page_code = #{page_code}")
+    PageList findByPageName(String page_code);
 
 }
