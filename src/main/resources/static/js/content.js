@@ -489,13 +489,12 @@ function set_DataTable_Buttons() {
     buttonsarray.push(delete_Btn);
     buttonsarray.push(add_Btn);
 
-    thead ='<th colspan="100%"><table style="width: 100%;border-collapse: collapse">'+tableinfo.print_info.print_head+'</table></th>';
-    tfoot ='<th colspan="100%"><table style="width: 100%;border-collapse: collapse">'+tableinfo.print_info.print_foot+'</table></th>';
+
+
     if (tableinfo.print_info != null) {
+        thead ='<th colspan="100%"><table style="width: 100%;border-collapse: collapse">'+tableinfo.print_info.print_head+'</table></th>';
+        tfoot ='<th colspan="100%"><table style="width: 100%;border-collapse: collapse">'+tableinfo.print_info.print_foot+'</table></th>';
         buttonsarray.push(get_print_Btn(tableinfo.print_info.print_name, thead, tfoot));
     }
-    // title = '출력';
-    // header = '<tr><th colspan="100%"><table style="width: 100%;border-collapse: collapse"><tr><td>이름</td><td>ㅔㅌ스트</td></tr><tr><td>홍길동</td><td>테스트</td></tr></table></th></tr>';
-    // footer = '<tr><td colspan="100%"><table style="width: 100%;border-collapse: collapse"><tr><td>이름</td></tr><tr><td>gd</td></tr></table></td></tr>';
 
 }
