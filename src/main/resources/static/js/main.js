@@ -1,8 +1,8 @@
 //현재 컨텐츠 경로
 content_url="/dashboard";
 
-
 $(document).ready(function () {
+    $(".injections").css("display", "none");
     show_content();
 });
 function set_content(value){
@@ -11,11 +11,10 @@ function set_content(value){
 }
 function show_content(){
     $.ajax({
-        url: content_url,
+        url: (content_url),
         type: "GET",
         success: function (data) {
             $("#page-wrapper").html(data);
         }
     });
 }
-

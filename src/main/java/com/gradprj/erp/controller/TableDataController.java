@@ -37,19 +37,20 @@ public class TableDataController {
     @PostMapping("/tabledata/{table_name}")
     @ResponseBody
     public DefaultRes saveTableData(@PathVariable String table_name, @RequestBody JSONObject data){
+        System.out.println("testestests");
         return tableData_service.saveData(table_name, (String) data.get("column"), (String) data.get("value"));
     }
 
     @PutMapping("/tabledata/{table_name}")
     @ResponseBody
-    public ResponseEntity updateTableData(@PathVariable String table_name, @RequestBody JSONObject data){
-        return new ResponseEntity(tableData_service.updateData(table_name, (String) data.get("column"), (String) data.get("value"),(String)data.get("key_column"),(String)data.get("key_value")), HttpStatus.OK);
+    public DefaultRes updateTableData(@PathVariable String table_name, @RequestBody JSONObject data){
+        return tableData_service.updateData(table_name, (String) data.get("column"), (String) data.get("value"),(String)data.get("key_column"),(String)data.get("key_value"));
     }
 
     @DeleteMapping("/tabledata/{table_name}")
     @ResponseBody
-    public ResponseEntity deleteTableData(@PathVariable String table_name, @RequestBody JSONObject data){
-        return new ResponseEntity(tableData_service.deleteData(table_name, (String) data.get("key_column"), (String) data.get("selected")), HttpStatus.OK);
+    public DefaultRes deleteTableData(@PathVariable String table_name, @RequestBody JSONObject data){
+        return tableData_service.deleteData(table_name, (String) data.get("key_column"), (String) data.get("selected"));
     }
 
 }

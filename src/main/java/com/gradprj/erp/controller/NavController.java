@@ -10,18 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 import springfox.documentation.annotations.ApiIgnore;
+import sun.tools.jconsole.JConsole;
 
 @Controller
 @ApiIgnore
 public class NavController {
-
-    @Autowired
-    private TableData_Service tableData_service;
-    @Autowired
-    private TableInfo_Service tableInfo_service;
-    @Autowired
-    private CodeList_Service codeList_service;
-
     @GetMapping("/main")
     public ModelAndView main() {
         ModelAndView mv = new ModelAndView();
@@ -36,17 +29,24 @@ public class NavController {
         return mv;
     }
 
+
+    @GetMapping("/addipage/{pagelink}")
+    public ModelAndView addipage(@PathVariable String pagelink) {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("addipage/" + pagelink);
+        return mv;
+    }
+
     @GetMapping("/api/usage")
     public String api() {
         return "redirect:/swagger-ui/index.html";
     }
 
-    @GetMapping("/list/{pagename}")
-    public ModelAndView list(@PathVariable String pagename, TableCriteria cri) {
+    @GetMapping("/content/{page_code}")
+    public ModelAndView list(@PathVariable String page_code) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("list");
+        mv.setViewName("content");
         return mv;
     }
-
 
 }

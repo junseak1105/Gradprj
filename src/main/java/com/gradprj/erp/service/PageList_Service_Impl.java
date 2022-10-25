@@ -24,7 +24,7 @@ public class PageList_Service_Impl implements PageList_Service {
 
     @Override
     @Transactional
-    public PageList findByPageName(String page_name) {
+    public PageList findByPageCode(String page_name) {
         return pageList_mapper.findByPageName(page_name);
     }
 }
