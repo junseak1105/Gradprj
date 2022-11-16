@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="../injection.jsp" %>
-<script src="/js/table/table.js?<%=formatedNow%>"></script>
+<%@include file="../includes/injection.jsp" %>
+<%--<script src="/js/table/table.js?<%=formatedNow%>"></script>--%>
+<%--include jquery--%>
+<%@include file="../includes/header.jsp"%>
+
+<script src="/js/table/table.js"></script>
 <div id="tablelist" style="height: 30%">
     <div class="col-md-3">
         <div class="panel panel-default">
@@ -52,3 +56,5 @@
         </div>
     </div>
 </div>
+
+<%@include file="../includes/footer.jsp"%>
